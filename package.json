@@ -12,7 +12,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format": "prettier --write '*/**/*.{js,css,md,json}'"
+    "format": "prettier --write '*/**/*.{js,css,md,json}'",
+    "lint:js": "eslint . --fix"
   },
   "eslintConfig": {
     "format": "prettier --write '*/**/*.{js,css,md,json}'",

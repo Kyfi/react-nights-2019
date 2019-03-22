@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 import config from './config.js'
 
@@ -66,4 +66,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App

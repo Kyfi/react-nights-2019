@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 
+// Config for API (fetch products..)
 import config from './config.js'
 
+// get token for authorization our data source
 const getToken = () =>
   fetch(`${config.apiUrl}/oauth/token`, {
     method: 'POST',
@@ -15,6 +17,7 @@ const getToken = () =>
     }),
   }).then(res => res.json())
 
+// get all products list (skus) from API
 const getSkus = access_token =>
   fetch(`${config.apiUrl}/api/skus`, {
     headers: {
@@ -25,7 +28,7 @@ const getSkus = access_token =>
 
 class App extends Component {
   state = {
-    isLoading: 'true',
+    isLoading: 'true', // stop confusing users, what happening until fetch data
     products: [],
   }
 

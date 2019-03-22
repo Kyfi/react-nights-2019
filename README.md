@@ -12,6 +12,24 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
+### `npm run format`
+
+Run this for reformating code.
+
+No need to discuss style in code review. Saves you time and energy.
+
+This project use prettier for reformating code https://prettier.io/.
+If u want to change configuration of this, lets visit file `.prettierrc`.
+If u want to change ignoring for some files, lets visit file `.prettierignore`.
+
+### `npm run lint:js`
+
+Run this for eslint check.
+
+Lets stop sending bugs and errors to git repository and handle syntax error by console.
+
+If u want to change configuration of this, lets visit file `.eslintrc.js`.
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.<br>
@@ -36,14 +54,6 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-### `npm run format`
-
-Run this for best code quality.
-
-### `npm run format`
-
-Run this for best code quality.
 
 ## Learn More
 

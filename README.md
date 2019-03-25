@@ -12,6 +12,24 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
+### `npm run format`
+
+Run this for reformating code.
+
+No need to discuss style in code review. Saves you time and energy.
+
+This project use prettier for reformating code https://prettier.io/.
+If u want to change configuration of this, lets visit file `.prettierrc`.
+If u want to change ignoring for some files, lets visit file `.prettierignore`.
+
+### `npm run lint:js`
+
+Run this for eslint check.
+
+Lets stop sending bugs and errors to git repository and handle syntax error by console.
+
+If u want to change configuration of this, lets visit file `.eslintrc.js`.
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.<br>

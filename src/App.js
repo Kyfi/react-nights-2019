@@ -1,22 +1,25 @@
 import React, { Component } from 'react'
 
+// Config for API (fetch products..)
+import config from './config.js'
+
 // get token for authorization our data source
 const getToken = () =>
-  fetch(`${process.env.REACT_APP_APIURL}/oauth/token`, {
+  fetch(`${config.apiUrl}/oauth/token`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       grant_type: 'client_credentials',
-      client_id: process.env.REACT_APP_CLIENT_ID,
-      scope: process.env.REACT_APP_SCOPE,
+      client_id: config.clientId,
+      scope: config.scope,
     }),
   }).then(res => res.json())
 
 // get all products list (skus) from API
 const getSkus = access_token =>
-  fetch(`${process.env.REACT_APP_APIURL}/api/skus`, {
+  fetch(`${config.apiUrl}/api/skus`, {
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${access_token}`,

@@ -28,13 +28,12 @@ const getSkus = access_token =>
 
 class App extends Component {
   state = {
-    isLoading: 'true', // stop confusing users, what happening until fetch data
-    products: [],
+    isLoading: true, // stop confusing users, what happening until fetch data
+    products: {},
   }
 
   async componentDidMount() {
     const { access_token } = await getToken()
-
     const products = await getSkus(access_token)
 
     this.setState({ products, isLoading: false })
@@ -50,7 +49,7 @@ class App extends Component {
       <div>
         <h1>E-Commerce app</h1>
         {isLoading && 'loading...'}
-        {!isLoading && (
+        {data && (
           <ul>
             {data.map(item => (
               <li key={item.id}>

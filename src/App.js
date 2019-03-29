@@ -5,6 +5,8 @@ import { ProductList } from './pages/ProductList'
 import { ProductDetail } from './pages/ProductDetail'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
+import MyAccount from './pages/User'
+import Cart from './pages/Cart'
 
 class App extends Component {
   render() {
@@ -13,15 +15,19 @@ class App extends Component {
         <nav>
           <Link to="/">Homepage</Link>
           <span> | </span>
-          <Link to="/sign-up">Sign Up</Link>
+          <Link to="/sign_up">Sign Up</Link>
           <span> | </span>
-          <Link to="/sign-in">Sign In</Link>
+          <Link to="/sign_in">Sign In</Link>
+          <span> | </span>
+          <Link to="/cart">Cart</Link>
         </nav>
         <h1>E-Commerce app</h1>
         <Switch>
           <Route path="/" exact component={ProductList} />
-          <Route path="/sign-up" exact component={SignUp} />
-          <Route path="/sign-in" exact component={SignIn} />
+          <Route path="/sign_up" exact component={SignUp} />
+          <Route path="/sign_in" exact component={SignIn} />
+          <Route path="/my_account" exact component={MyAccount} />
+          <Route path="/cart" exact component={Cart} />
           <Route path="/:productId" component={ProductDetail} />
         </Switch>
       </div>

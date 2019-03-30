@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getProducts } from '../../api/get-products'
+import { getProducts } from '../../api/getProducts'
 import { Link } from 'react-router-dom'
 
 class ProductList extends Component {

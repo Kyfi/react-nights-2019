@@ -1,25 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { getProductById } from '../../api/get-productById'
+import { getProductById } from '../../api/getProductById'
 
 class ProductDetail extends React.Component {
   state = {
     isLoading: true, // stop confusing users, what happening until fetch data
-    products: {},
+    productData: {},
   }
 
   async componentDidMount() {
     const { match } = this.props
 
-    const products = await getProductById(match.params.productId)
-    this.setState({ products, isLoading: false })
+    const productData = await getProductById(match.params.productId)
+    this.setState({ productData, isLoading: false })
   }
 
   render() {
     const {
       isLoading,
-      products: { data: product },
+      productData: { data: product },
     } = this.state
 
     return (

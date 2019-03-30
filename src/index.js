@@ -4,12 +4,14 @@ import { BrowserRouter as Router } from 'react-router-dom'
 
 import * as serviceWorker from './serviceWorker'
 import App from './App'
+import Routes from './routes'
 
 // eslint-disable-next-line react/no-render-return-value
 const render = () => {
   ReactDOM.render(
     <Router>
       <App />
+      <Routes />
     </Router>,
     document.getElementById('root')
   )

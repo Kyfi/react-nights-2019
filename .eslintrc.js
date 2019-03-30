@@ -24,6 +24,5 @@ module.exports = {
   rules: {
     'prefer-named-capture-group': 0,
     'react/no-did-mount-set-state': 1,
-    'react/prefer-stateless-function': 0,
   },
 }

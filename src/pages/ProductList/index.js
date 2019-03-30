@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { getProducts } from '../../api/getProducts'
 import { Link } from 'react-router-dom'
+import { getAuthRequest } from '../../api/getAuthRequest'
 
 class ProductList extends Component {
   state = {
@@ -9,7 +9,7 @@ class ProductList extends Component {
   }
 
   async componentDidMount() {
-    const products = await getProducts()
+    const products = await getAuthRequest('skus')
     this.setState({ products, isLoading: false })
   }
 

@@ -2,9 +2,9 @@ import config from '../config'
 
 import { getToken } from './getToken'
 
-export const getProductById = async productId => {
+export const getAuthRequest = async path => {
   const { access_token } = await getToken()
-  const res = await fetch(`${config.apiUrl}/api/skus/${productId}`, {
+  const res = await fetch(`${config.apiUrl}/api/${path}`, {
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${access_token}`,

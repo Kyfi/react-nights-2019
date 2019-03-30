@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { getProductById } from '../../api/getProductById'
+import { getAuthRequest } from '../../api/getAuthRequest'
 
 class ProductDetail extends React.Component {
   state = {
@@ -12,7 +12,7 @@ class ProductDetail extends React.Component {
   async componentDidMount() {
     const { match } = this.props
 
-    const productData = await getProductById(match.params.productId)
+    const productData = await getAuthRequest(`skus/${match.params.productId}`)
     this.setState({ productData, isLoading: false })
   }
 

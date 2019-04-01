@@ -1,7 +1,10 @@
 import React from 'react'
 
+import Header from '../../components/Header'
+
 const Index = () => (
   <>
+    <Header />
     <h1>Sign In</h1>
     <form action="">
       <div>

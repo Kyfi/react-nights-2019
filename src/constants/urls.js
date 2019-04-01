@@ -3,7 +3,7 @@ const url = {
   signUp: '/sign_up',
   signIn: '/sign_in',
   cart: '/cart',
-  productDetail: '/:productId',
+  productDetail: productId => `/${productId}`,
 }
 
 export default url

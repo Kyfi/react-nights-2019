@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { getAuthRequest } from '../../api/getAuthRequest'
+import Header from '../../components/Header'
 
 class ProductDetail extends React.Component {
   state = {
@@ -13,6 +14,7 @@ class ProductDetail extends React.Component {
     const { match } = this.props
 
     const productData = await getAuthRequest(`skus/${match.params.productId}`)
+    console.log(productData)
     this.setState({ productData, isLoading: false })
   }
 
@@ -24,6 +26,7 @@ class ProductDetail extends React.Component {
 
     return (
       <>
+        <Header />
         {isLoading && '...'}
         {product && (
           <div>

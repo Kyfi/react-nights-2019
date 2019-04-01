@@ -8,14 +8,19 @@ import SignIn from './pages/SignIn'
 import Cart from './pages/Cart'
 import Urls from './constants/urls'
 
-const Routes = () => (
-  <Switch>
-    <Route path={Urls.index} exact component={ProductList} />
-    <Route path={Urls.signUp} exact component={SignUp} />
-    <Route path={Urls.signIn} exact component={SignIn} />
-    <Route path={Urls.cart} exact component={Cart} />
-    <Route path={Urls.productDetail} component={ProductDetail} />
-  </Switch>
-)
+const Routes = () => {
+  return (
+    <Switch>
+      <Route path={Urls.index} exact component={ProductList} />
+      <Route path={Urls.signUp} exact component={SignUp} />
+      <Route path={Urls.signIn} exact component={SignIn} />
+      <Route path={Urls.cart} exact component={Cart} />
+      <Route
+        path={Urls.productDetail(':productId')}
+        component={ProductDetail}
+      />
+    </Switch>
+  )
+}
 
 export default Routes

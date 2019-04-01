@@ -1,31 +1,23 @@
 import React from 'react'
 
 import Header from '../../components/Header'
+import Layout from '../../components/Layout'
+import { H1 } from '../../components/Typography'
+import InputField from '../../components/Input'
+import { Button } from '../../components/Button/styled'
 
 const SignUp = () => (
-  <>
+  <Layout>
     <Header />
-    <h1>Sign Up</h1>
+    <H1>Sign Up</H1>
     <form action="">
-      <div>
-        <label>Name</label>
-        <input type="text" />
-      </div>
-      <div>
-        <label>Email</label>
-        <input type="email" />
-      </div>
-      <div>
-        <label>Password</label>
-        <input type="password" />
-      </div>
-      <div>
-        <label>Password again</label>
-        <input type="password" />
-      </div>
-      <button type={'submit'}>Send</button>
+      <InputField label={'Name'} type={'text'} />
+      <InputField label={'Email'} type={'email'} />
+      <InputField label={'Password'} type={'password'} />
+      <InputField label={'Password again'} type={'password'} />
+      <Button type={'submit'}>send</Button>
     </form>
-  </>
+  </Layout>
 )
 
 export default SignUp

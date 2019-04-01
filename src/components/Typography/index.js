@@ -3,7 +3,6 @@ import { textAlign } from 'styled-system'
 import theme from '../../common/theme'
 
 const headerFonts = css`
-  font-family: circular, serif;
   font-weight: 400;
   color: ${theme.color.red};
   text-transform: uppercase;

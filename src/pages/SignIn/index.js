@@ -1,23 +1,21 @@
 import React from 'react'
 
 import Header from '../../components/Header'
+import { H1 } from '../../components/Typography/'
+import Layout from '../../components/Layout'
+import InputField from '../../components/Input'
+import { Button } from '../../components/Button/styled'
 
 const Index = () => (
-  <>
+  <Layout>
     <Header />
-    <h1>Sign In</h1>
-    <form action="">
-      <div>
-        <label>Email</label>
-        <input type="email" />
-      </div>
-      <div>
-        <label>Password</label>
-        <input type="password" />
-      </div>
-      <button type={'submit'}>Send</button>
+    <H1>Sign In</H1>
+    <form>
+      <InputField label={'Email'} type={'email'} />
+      <InputField label={'Password'} type={'password'} />
+      <Button type={'submit'}>send</Button>
     </form>
-  </>
+  </Layout>
 )
 
 export default Index

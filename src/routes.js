@@ -6,17 +6,17 @@ import { ProductDetail } from './pages/ProductDetail'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import Cart from './pages/Cart'
-import Urls from './constants/urls'
+import urls from './constants/urls'
 
 const Routes = () => {
   return (
     <Switch>
-      <Route path={Urls.index} exact component={ProductList} />
-      <Route path={Urls.signUp} exact component={SignUp} />
-      <Route path={Urls.signIn} exact component={SignIn} />
-      <Route path={Urls.cart} exact component={Cart} />
+      <Route path={urls.index} exact component={ProductList} />
+      <Route path={urls.signUp} exact component={SignUp} />
+      <Route path={urls.signIn} exact component={SignIn} />
+      <Route path={urls.cart} exact component={Cart} />
       <Route
-        path={Urls.productDetail(':productId')}
+        path={urls.productDetail(':productId')}
         component={ProductDetail}
       />
     </Switch>

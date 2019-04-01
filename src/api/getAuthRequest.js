@@ -14,8 +14,6 @@ export const getAuthRequest = async (path, type) => {
 
   const products = await res.json()
 
-  console.log('products', products)
-
   switch (type) {
     case 'products':
       return products.data.map(product => ({

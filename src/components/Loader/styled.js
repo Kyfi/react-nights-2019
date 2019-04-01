@@ -34,9 +34,9 @@ const LoaderWrap = styled.div`
   ${props =>
     props.small &&
     css`
-      transform: scale(0.5)
-      width: 5rem
-      height: 5rem
+      transform: scale(0.5);
+      width: 5rem;
+      height: 5rem;
     `};
 
   padding: 5rem 0;

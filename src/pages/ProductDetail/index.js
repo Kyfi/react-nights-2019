@@ -2,8 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { getAuthRequest } from '../../api/getAuthRequest'
+import Layout from '../../components/Layout'
 import Header from '../../components/Header'
 import Loader from '../../components/Loader'
+import { H1 } from '../../components/Typography'
+import ProductDetailComponent from './components/ProductDetail'
 
 class ProductDetail extends React.Component {
   state = {
@@ -25,26 +28,12 @@ class ProductDetail extends React.Component {
     const { isLoading, productData } = this.state
 
     return (
-      <>
+      <Layout>
         <Header />
+        <H1 textAlign="center">Product Detail: {productData.id}</H1>
         {isLoading && <Loader />}
-        {productData && (
-          <div>
-            <h2>Product Detail: {productData.id}</h2>
-            <div>
-              <img
-                width={300}
-                src={productData.image_url}
-                alt={productData.name}
-              />
-            </div>
-            <div>price: {productData.price}</div>
-            <div>name: {productData.name}</div>
-            <div>code: {productData.code}</div>
-            <div>description: {productData.description}</div>
-          </div>
-        )}
-      </>
+        {productData && <ProductDetailComponent product={productData} />}
+      </Layout>
     )
   }
 }

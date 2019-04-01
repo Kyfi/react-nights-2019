@@ -1,9 +1,11 @@
 import React from 'react'
+
+import urls from '../../../../../constants/urls'
 import { Wrapper, ImgWrap, Img, TitleWrap, Title, Price, Link } from './styled'
 
 const Product = ({ node }) => (
   <Wrapper>
-    <Link to={node.id}>
+    <Link to={urls.productDetail(node.id)}>
       <ImgWrap>
         <Img src={node.image_url} alt={`${node.name} image`} />
       </ImgWrap>

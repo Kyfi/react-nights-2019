@@ -4,6 +4,24 @@ import { createGlobalStyle } from 'styled-components'
 import theme from './common/theme'
 
 const GlobalStyles = createGlobalStyle`
+  @font-face {
+    font-family: 'circular';
+    src: url('font/CircularStd-Book.otf') format('opentype');
+    font-weight: 100;
+  }
+
+  @font-face {
+    font-family: 'circular';
+    src: url('font/CircularStd-Medium.otf') format('opentype');
+    font-weight: 200;
+  }
+
+  @font-face {
+    font-family: 'circular';
+    src: url('font/CircularStd-Bold.otf') format('opentype');
+    font-weight: 400;
+  }
+
   * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

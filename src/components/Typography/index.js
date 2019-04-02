@@ -4,6 +4,7 @@ import theme from '../../common/theme'
 
 const headerFonts = css`
   font-weight: 400;
+  font-family: circular, serif;
   color: ${theme.color.purple};
   text-transform: uppercase;
   ${textAlign}

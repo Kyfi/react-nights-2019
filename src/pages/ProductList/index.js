@@ -6,6 +6,7 @@ import Loader from '../../components/Loader'
 import { H1 } from '../../components/Typography'
 
 import { getAuthRequest } from '../../api/getAuthRequest'
+import { productsWithPrice } from '../../helpers/transform/productsWithPrice'
 
 class ProductList extends Component {
   state = {
@@ -14,7 +15,8 @@ class ProductList extends Component {
   }
 
   async componentDidMount() {
-    const products = await getAuthRequest('skus?include=prices', 'products')
+    const productsData = await getAuthRequest('skus?include=prices')
+    const products = productsWithPrice(productsData)
     this.setState({ products, isLoading: false })
   }
 

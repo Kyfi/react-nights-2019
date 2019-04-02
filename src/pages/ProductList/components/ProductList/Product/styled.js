@@ -2,7 +2,13 @@ import styled from 'styled-components/macro'
 import { Link as BaseLink } from 'react-router-dom'
 import theme from '../../../../../common/theme'
 
-export const Wrapper = styled.li``
+export const Wrapper = styled.li`
+  width: 100%;
+
+  @media (min-width: ${theme.breakPoint.sm}) {
+    width: auto;
+  }
+`
 
 export const Link = styled(BaseLink)`
   text-decoration: none;
@@ -17,6 +23,10 @@ export const Link = styled(BaseLink)`
 
   @media (min-width: ${theme.breakPoint.sm}) {
     width: 35rem;
+  }
+
+  &:hover {
+    box-shadow: ${theme.shadow.basic};
   }
 `
 

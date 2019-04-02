@@ -22,7 +22,7 @@ const GlobalStyles = createGlobalStyle`
     font-size: 1.6rem;
     font-family: 'circular', sans-serif;
     font-weight: 100;
-    background-color: ${theme.color.softGray};
+    background-color: ${theme.color.gray};
   }
 
   #root {

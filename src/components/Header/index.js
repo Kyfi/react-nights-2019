@@ -25,7 +25,9 @@ const Links = [
 const Header = () => (
   <Nav>
     {Links.map(link => (
-      <Link to={link.path}>{link.label}</Link>
+      <Link key={link.path.toString()} to={link.path}>
+        {link.label}
+      </Link>
     ))}
   </Nav>
 )

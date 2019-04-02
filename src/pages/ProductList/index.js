@@ -6,7 +6,6 @@ import Loader from '../../components/Loader'
 import { H1 } from '../../components/Typography'
 
 import { getAuthRequest } from '../../api/getAuthRequest'
-import Header from '../../components/Header'
 
 class ProductList extends Component {
   state = {
@@ -24,7 +23,6 @@ class ProductList extends Component {
 
     return (
       <Layout>
-        <Header />
         <H1 textAlign="center">E-Commerce app</H1>
         {isLoading && <Loader />}
         {products && <ProductListComponent products={products} />}

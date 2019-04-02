@@ -1,6 +1,5 @@
 import React from 'react'
 
-import Header from '../../components/Header'
 import Layout from '../../components/Layout'
 import { H1 } from '../../components/Typography'
 import InputField from '../../components/Input'
@@ -8,7 +7,6 @@ import { Button } from '../../components/Button/styled'
 
 const SignUp = () => (
   <Layout>
-    <Header />
     <H1>Sign Up</H1>
     <form action="">
       <InputField label={'Name'} type={'text'} />

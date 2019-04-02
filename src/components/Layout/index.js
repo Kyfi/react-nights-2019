@@ -1,7 +1,14 @@
-import styled from 'styled-components'
+import React from 'react'
 
-const Layout = styled.div`
-  padding: 2rem;
-`
+import { Layout as LayoutBase } from './styled'
+
+import Header from '../Header'
+
+const Layout = ({ children }) => (
+  <>
+    <Header />
+    <LayoutBase>{children}</LayoutBase>
+  </>
+)
 
 export default Layout

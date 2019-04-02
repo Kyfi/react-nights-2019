@@ -14,7 +14,10 @@ export const Link = styled(BaseLink)`
   align-items: center;
   text-align: center;
   margin-bottom: 1rem;
-  width: 35rem;
+
+  @media (min-width: ${theme.breakPoint.sm}) {
+    width: 35rem;
+  }
 `
 
 export const ImgWrap = styled.div`

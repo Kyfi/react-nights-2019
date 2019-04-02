@@ -12,13 +12,19 @@ export const Price = styled.div`
 `
 
 export const Img = styled.img`
-  max-height: 20rem;
   max-width: 100%;
+
+  @media (min-width: ${theme.breakPoint.xs}) {
+    max-height: 20rem;
+  }
 `
 
 export const TitleWrap = styled.div`
-  height: 6.7rem;
   overflow: hidden;
+
+  @media (min-width: ${theme.breakPoint.sm}) {
+    height: 6.7rem;
+  }
 `
 
 export const Title = styled.h3`
@@ -29,6 +35,7 @@ export const Title = styled.h3`
 
 export const Description = styled.div`
   color: ${theme.color.black};
-  font-size: 1.3rem;
+  font-size: 1.4rem;
+  line-height: 1.56;
   margin-top: 2rem;
 `

@@ -23,6 +23,12 @@ const theme = {
     xxLarge: '2.4rem',
   },
   space: ['0rem', '2rem', '4rem', '8rem', '16rem', '32rem'],
+  breakPoint: {
+    xs: '600px',
+    sm: '900px',
+    md: '1200px',
+    lg: '1800px',
+  },
 }
 
 export default theme

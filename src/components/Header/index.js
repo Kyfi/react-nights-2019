@@ -1,18 +1,37 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
-import Urls from '../../constants/urls'
+import { Wrapper, Nav, Link } from './styled'
+import urls from '../../constants/urls'
+
+const links = [
+  {
+    path: urls.index,
+    label: 'Homepage',
+  },
+  {
+    path: urls.signUp,
+    label: 'Sign Up',
+  },
+  {
+    path: urls.signIn,
+    label: 'Sign In',
+  },
+  {
+    path: urls.cart,
+    label: 'Cart',
+  },
+]
 
 const Header = () => (
-  <nav>
-    <Link to={Urls.index}>Homepage</Link>
-    <span> |</span>
-    <Link to={Urls.signUp}>Sign Up</Link>
-    <span> |</span>
-    <Link to={Urls.signIn}>Sign In</Link>
-    <span> |</span>
-    <Link to={Urls.cart}>Cart</Link>
-  </nav>
+  <Wrapper>
+    <Nav>
+      {links.map(link => (
+        <Link key={link.path.toString()} to={link.path}>
+          {link.label}
+        </Link>
+      ))}
+    </Nav>
+  </Wrapper>
 )
 
 export default Header

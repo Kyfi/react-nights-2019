@@ -1,17 +1,41 @@
 import React from 'react'
-import { H1 } from '../../components/Typography'
-import Layout from '../../components/Layout'
+import { connect } from 'react-redux'
 
-const Index = () => (
+import Layout from '../../components/Layout'
+import { H1 } from '../../components/Typography'
+
+const CartView = ({ items }) => (
   <Layout>
     <H1>Cart</H1>
     <div>
-      <span role={'img'} aria-label={'Cart is so empty'}>
-        😢
-      </span>{' '}
-      Cart is so empty...
+      {!items && (
+        <>
+          <span role={'img'} aria-label={'Cart is so empty'}>
+            😢
+          </span>{' '}
+          Cart is so empty...
+        </>
+      )}
+      {items && (
+        <ul>
+          {items.map(item => (
+            <li key={item.product.id}>
+              {item.product.name} - {item.quantity}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   </Layout>
 )
 
-export default Index
+const mapStateToProps = state => ({
+  items: Object.keys(state.cartItems).map(productId => ({
+    quantity: state.cartItems[productId],
+    product: state.products.find(p => p.id === productId),
+  })),
+})
+
+const Cart = connect(mapStateToProps)(CartView)
+
+export { Cart }

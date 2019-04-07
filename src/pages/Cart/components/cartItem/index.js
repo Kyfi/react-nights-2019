@@ -12,7 +12,7 @@ const cartItemComponent = ({ item, onRemoveFromCart }) => (
     <CartItemQuantity>{item.quantity}</CartItemQuantity>
     <CartItemButton>
       <button
-        onClick={evt => onRemoveFromCart(item.id, evt)}
+        onClick={evt => onRemoveFromCart(item.product.id, evt)}
         type={'button'}
         title={'Delete this cart item'}
         aria-label={'Delete this cart item'}

@@ -34,8 +34,7 @@ class Product extends React.Component {
     this.setState({ isLoading: false })
   }
 
-  handleAddToCart = (productId, evt) => {
-    evt.preventDefault()
+  handleAddToCart = productId => {
     this.props.addProduct(productId)
   }
 
@@ -47,7 +46,7 @@ class Product extends React.Component {
       <Layout>
         {isLoading && <Loader />}
         {product && <ProductComponent node={product} key={product.id} />}
-        <AddButton onClick={evt => this.handleAddToCart(product.id, evt)}>
+        <AddButton onClick={() => this.handleAddToCart(product.id)}>
           Add to Cart
         </AddButton>
       </Layout>

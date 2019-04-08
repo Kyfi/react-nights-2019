@@ -1,6 +1,8 @@
 import React from 'react'
 import {
   CartItem,
+  CartImgWrap,
+  CartImg,
   CartItemName,
   CartItemQuantity,
   CartItemButton,
@@ -10,6 +12,13 @@ const CartItemComponent = ({ item, onRemoveFromCart }) => (
   <>
     {item.quantity > 0 && (
       <CartItem>
+        <CartImgWrap>
+          <CartImg
+            width={40}
+            src={item.product.image_url}
+            alt={`${item.product.name} image`}
+          />
+        </CartImgWrap>
         <CartItemName>{item.product.name}</CartItemName>
         <CartItemQuantity>{item.quantity}</CartItemQuantity>
         <CartItemButton>

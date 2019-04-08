@@ -1,8 +1,13 @@
 import styled from 'styled-components'
 
+export const CartImgWrap = styled.div``
+
+export const CartImg = styled.img``
+
 export const CartItem = styled.div`
   display: flex;
   flex-basis: 100%;
+  align-items: center;
   padding: 10px;
 
   &:hover {
@@ -17,6 +22,7 @@ export const CartItem = styled.div`
 export const CartItemName = styled.div`
   display: flex;
   flex: auto;
+  margin-left: 10px;
 `
 
 export const CartItemQuantity = styled.div`

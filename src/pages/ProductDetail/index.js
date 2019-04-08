@@ -27,7 +27,7 @@ class Product extends React.Component {
       )
 
       const product = productWithPrice(productData)
-      console.log(product)
+
       this.props.loadProduct(product)
     }
 

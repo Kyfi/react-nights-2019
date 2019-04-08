@@ -47,7 +47,6 @@ class Products extends Component {
               onAddToCart={this.handleAddToCart}
             />
           ))}
-          {console.log(this.props.products)}
         </ProductsWrap>
       </Layout>
     )

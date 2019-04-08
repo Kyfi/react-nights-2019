@@ -1,6 +1,6 @@
 import { LOAD_PRODUCT } from './actions'
 
-const reducer = (state = [], action) => {
+const reducer = (state = null, action) => {
   switch (action.type) {
     case LOAD_PRODUCT:
       return action.payload

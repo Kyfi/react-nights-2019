@@ -9,12 +9,12 @@ import {
 const cartItemComponent = ({ item, onRemoveFromCart }) => (
   <>
     {item.quantity > 0 && (
-      <CartItem key={item.product.id}>
+      <CartItem>
         <CartItemName>{item.product.name}</CartItemName>
         <CartItemQuantity>{item.quantity}</CartItemQuantity>
         <CartItemButton>
           <button
-            onClick={evt => onRemoveFromCart(item.product.id, evt)}
+            onClick={() => onRemoveFromCart(item.product.id)}
             type={'button'}
             title={'Delete this cart item'}
             aria-label={'Delete this cart item'}

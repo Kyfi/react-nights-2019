@@ -7,7 +7,6 @@ import { addProduct } from '../../store/cartItems/actions'
 
 import Layout from '../../components/Layout'
 import Loader from '../../components/Loader'
-import { H1 } from '../../components/Typography'
 import ProductDetailComponent from './components/ProductDetail'
 
 import { getAuthRequest } from '../../api/getAuthRequest'
@@ -20,7 +19,7 @@ class Product extends React.Component {
   }
 
   async componentDidMount() {
-    if (this.props.product.length === 0) {
+    if (this.props.product === null) {
       const { match } = this.props
 
       const productData = await getAuthRequest(
@@ -28,6 +27,7 @@ class Product extends React.Component {
       )
 
       const product = productWithPrice(productData)
+      console.log(product)
       this.props.loadProduct(product)
     }
 
@@ -42,9 +42,9 @@ class Product extends React.Component {
   render() {
     const { product } = this.props
     const { isLoading } = this.state
+
     return (
       <Layout>
-        <H1 textAlign="center">Product Detail: {product.id}</H1>
         {isLoading && <Loader />}
         {product && <ProductDetailComponent product={product} />}
         <AddButton onClick={evt => this.handleAddToCart(product.id, evt)}>

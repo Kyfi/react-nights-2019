@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  Wrapper,
+  ProductWrap,
   ImgWrap,
   Img,
   TitleWrap,
@@ -10,7 +10,7 @@ import {
 } from './styled'
 
 const Product = ({ node }) => (
-  <Wrapper>
+  <ProductWrap>
     <TitleWrap>
       <Title>{node.name}</Title>
     </TitleWrap>
@@ -19,7 +19,7 @@ const Product = ({ node }) => (
     </ImgWrap>
     <Price>{node.price}</Price>
     <Description>{node.description}</Description>
-  </Wrapper>
+  </ProductWrap>
 )
 
 export default Product

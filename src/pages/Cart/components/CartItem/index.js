@@ -6,7 +6,7 @@ import {
   CartItemButton,
 } from './styled'
 
-const cartItemComponent = ({ item, onRemoveFromCart }) => (
+const CartItemComponent = ({ item, onRemoveFromCart }) => (
   <>
     {item.quantity > 0 && (
       <CartItem>
@@ -28,4 +28,4 @@ const cartItemComponent = ({ item, onRemoveFromCart }) => (
   </>
 )
 
-export default cartItemComponent
+export default CartItemComponent

@@ -7,11 +7,11 @@ import { addProduct } from '../../store/cartItems/actions'
 
 import Layout from '../../components/Layout'
 import Loader from '../../components/Loader'
-import ProductDetailComponent from './components/ProductDetail'
 
 import { getAuthRequest } from '../../api/getAuthRequest'
 import { productWithPrice } from '../../helpers/transform/productWithPrice'
 import { AddButton } from '../ProductList/components/Product/styled'
+import ProductComponent from './components/Product'
 
 class Product extends React.Component {
   state = {
@@ -46,7 +46,7 @@ class Product extends React.Component {
     return (
       <Layout>
         {isLoading && <Loader />}
-        {product && <ProductDetailComponent product={product} />}
+        {product && <ProductComponent node={product} key={product.id} />}
         <AddButton onClick={evt => this.handleAddToCart(product.id, evt)}>
           Add to Cart
         </AddButton>

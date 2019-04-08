@@ -1,15 +1,15 @@
-import styled from 'styled-components/macro'
-import theme from '../../../../../common/theme'
+import styled from 'styled-components'
+import theme from '../../../../common/theme'
 
-export const Wrapper = styled.div``
-
-export const ImgWrap = styled.div``
+export const ProductWrap = styled.div``
 
 export const Price = styled.div`
   color: ${theme.color.red};
   font-size: 1.8rem;
   margin-top: 2rem;
 `
+
+export const ImgWrap = styled.div``
 
 export const Img = styled.img`
   max-width: 100%;

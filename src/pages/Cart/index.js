@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import Layout from '../../components/Layout'
 import { H1 } from '../../components/Typography'
-import CartItemComponent from './components/cartItem'
+import CartItemComponent from './components/CartItem'
 import { CartItemsWrapper } from './styled'
 import { removeProduct } from '../../store/cartItems/actions'
 

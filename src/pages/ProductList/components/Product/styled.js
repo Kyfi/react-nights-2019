@@ -66,4 +66,5 @@ export const AddButton = styled.button`
   border: none;
   border-radius: ${theme.radius.basic};
   color: ${theme.color.white};
+  cursor: pointer;
 `

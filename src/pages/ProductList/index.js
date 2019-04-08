@@ -41,11 +41,7 @@ class Products extends Component {
         {this.state.isLoading && <Loader />}
         <ProductsWrap>
           {this.props.products.map(product => (
-            <Product
-              key={product.id}
-              node={product}
-              onAddToCart={this.handleAddToCart}
-            />
+            <Product key={product.id} node={product} />
           ))}
         </ProductsWrap>
       </Layout>

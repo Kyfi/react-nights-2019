@@ -3,39 +3,42 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { loadProduct } from '../../store/product/actions'
-import { addProduct } from '../../store/cartItems/actions'
 
 import Layout from '../../components/Layout'
 import Loader from '../../components/Loader'
 
 import { getAuthRequest } from '../../api/getAuthRequest'
 import { productWithPrice } from '../../helpers/transform/productWithPrice'
-import { AddButton } from '../ProductList/components/Product/styled'
-import ProductComponent from './components/Product'
+import { Product as ProductComponent } from './components/Product'
 
 class Product extends React.Component {
   state = {
     isLoading: true, // stop confusing users, what happening until fetch data
   }
 
-  async componentDidMount() {
-    if (this.props.product === null) {
-      const { match } = this.props
+  fetchProduct = async productId => {
+    this.setState({ isLoading: true })
+    const productData = await getAuthRequest(`skus/${productId}?include=prices`)
+    const product = productWithPrice(productData)
 
-      const productData = await getAuthRequest(
-        `skus/${match.params.productId}?include=prices`
-      )
-
-      const product = productWithPrice(productData)
-
-      this.props.loadProduct(product)
-    }
-
+    this.props.loadProduct(product)
     this.setState({ isLoading: false })
   }
 
-  handleAddToCart = productId => {
-    this.props.addProduct(productId)
+  componentDidMount() {
+    const { productId } = this.props.match.params
+    this.fetchProduct(productId)
+  }
+
+  componentDidUpdate(prevProps) {
+    const { productId } = this.props.match.params
+    if (prevProps.match.params.productId !== productId) {
+      this.fetchProduct(productId)
+    }
+  }
+
+  componentWillUnmount() {
+    this.props.loadProduct(null)
   }
 
   render() {
@@ -46,9 +49,6 @@ class Product extends React.Component {
       <Layout>
         {isLoading && <Loader />}
         {product && <ProductComponent node={product} key={product.id} />}
-        <AddButton onClick={() => this.handleAddToCart(product.id)}>
-          Add to Cart
-        </AddButton>
       </Layout>
     )
   }
@@ -64,7 +64,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   loadProduct,
-  addProduct,
 }
 
 const ProductDetail = connect(

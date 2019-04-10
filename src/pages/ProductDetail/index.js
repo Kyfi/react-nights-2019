@@ -2,14 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { loadProduct } from '../../store/product/actions'
-
 import Layout from '../../components/Layout'
 import Loader from '../../components/Loader'
 
+import { addProduct } from '../../store/cartItems/actions'
+import { loadProduct } from '../../store/product/actions'
+
 import { getAuthRequest } from '../../api/getAuthRequest'
 import { productWithPrice } from '../../helpers/transform/productWithPrice'
-import { Product as ProductComponent } from './components/Product'
+import ProductComponent from './components/Product'
 
 class Product extends React.Component {
   state = {
@@ -37,10 +38,6 @@ class Product extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-    this.props.loadProduct(null)
-  }
-
   render() {
     const { product } = this.props
     const { isLoading } = this.state
@@ -48,7 +45,13 @@ class Product extends React.Component {
     return (
       <Layout>
         {isLoading && <Loader />}
-        {product && <ProductComponent node={product} key={product.id} />}
+        {product && (
+          <ProductComponent
+            node={product}
+            key={product.id}
+            addProduct={this.props.addProduct}
+          />
+        )}
       </Layout>
     )
   }
@@ -64,6 +67,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   loadProduct,
+  addProduct,
 }
 
 const ProductDetail = connect(

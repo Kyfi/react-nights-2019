@@ -29,19 +29,19 @@ class Products extends Component {
     this.setState({ isLoading: false })
   }
 
-  handleAddToCart = (productId, evt) => {
-    evt.preventDefault()
-    this.props.addProduct(productId)
-  }
-
   render() {
+    const { products } = this.props
     return (
       <Layout>
         <H1 textAlign="center">E-Commerce app</H1>
         {this.state.isLoading && <Loader />}
         <ProductsWrap>
-          {this.props.products.map(product => (
-            <Product key={product.id} node={product} />
+          {products.map(product => (
+            <Product
+              key={product.id}
+              node={product}
+              addProduct={this.props.addProduct}
+            />
           ))}
         </ProductsWrap>
       </Layout>

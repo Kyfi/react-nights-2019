@@ -1,11 +1,12 @@
 import styled from 'styled-components/macro'
+import theme from '../../common/theme'
 
 export const Button = styled.button`
-  display: flex;
-  justify-content: center;
-  background: turquoise;
-  color: white;
-  padding: 1.2rem 1.5rem;
-  min-width: 120px;
-  border: 0;
+  background: ${theme.color.red};
+  padding: 1rem;
+  margin-top: 0.5rem;
+  border: none;
+  border-radius: ${theme.radius.basic};
+  color: ${theme.color.white};
+  cursor: pointer;
 `

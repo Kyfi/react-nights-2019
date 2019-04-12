@@ -1,6 +1,7 @@
 import React from 'react'
+
 import {
-  Wrapper,
+  ProductWrap,
   ImgWrap,
   Img,
   TitleWrap,
@@ -9,8 +10,10 @@ import {
   Description,
 } from './styled'
 
-const Product = ({ node }) => (
-  <Wrapper>
+import { Button } from '../../../../components/Button'
+
+const ProductComponent = ({ node, addProduct }) => (
+  <ProductWrap>
     <TitleWrap>
       <Title>{node.name}</Title>
     </TitleWrap>
@@ -19,7 +22,14 @@ const Product = ({ node }) => (
     </ImgWrap>
     <Price>{node.price}</Price>
     <Description>{node.description}</Description>
-  </Wrapper>
+    <Button
+      onClick={() => {
+        addProduct(node.id)
+      }}
+    >
+      Add to Cart
+    </Button>
+  </ProductWrap>
 )
 
-export default Product
+export default ProductComponent

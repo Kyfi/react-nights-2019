@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-import ProductListComponent from './components/ProductList'
 import Layout from '../../components/Layout'
 import Loader from '../../components/Loader'
 import { H1 } from '../../components/Typography'
@@ -8,29 +8,58 @@ import { H1 } from '../../components/Typography'
 import { getAuthRequest } from '../../api/getAuthRequest'
 import { productsWithPrice } from '../../helpers/transform/productsWithPrice'
 
-class ProductList extends Component {
+import { addProduct } from '../../store/cartItems/actions'
+import { loadProducts } from '../../store/products/actions'
+
+import { ProductsWrap } from './styled'
+import Product from './components/Product'
+
+class Products extends Component {
   state = {
     isLoading: true, // stop confusing users, what happening until fetch data
-    products: [],
   }
 
   async componentDidMount() {
-    const productsData = await getAuthRequest('skus?include=prices')
-    const products = productsWithPrice(productsData)
-    this.setState({ products, isLoading: false })
+    if (this.props.products.length === 0) {
+      const productsData = await getAuthRequest('skus?include=prices')
+      const products = productsWithPrice(productsData)
+      this.props.loadProducts(products)
+    }
+
+    this.setState({ isLoading: false })
   }
 
   render() {
-    const { isLoading, products } = this.state
-
     return (
       <Layout>
         <H1 textAlign="center">E-Commerce app</H1>
-        {isLoading && <Loader />}
-        {products && <ProductListComponent products={products} />}
+        {this.state.isLoading && <Loader />}
+        <ProductsWrap>
+          {this.props.products.map(product => (
+            <Product
+              key={product.id}
+              node={product}
+              addProduct={this.props.addProduct}
+            />
+          ))}
+        </ProductsWrap>
       </Layout>
     )
   }
 }
+
+const mapStateToProps = state => ({
+  products: state.products,
+})
+
+const mapDispatchToProps = {
+  loadProducts,
+  addProduct,
+}
+
+const ProductList = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Products)
 
 export { ProductList }

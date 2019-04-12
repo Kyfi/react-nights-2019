@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro'
 import { Link as BaseLink } from 'react-router-dom'
-import theme from '../../../../../common/theme'
+import theme from '../../../../common/theme'
 
 export const Wrapper = styled.li`
   width: 100%;
@@ -57,4 +57,14 @@ export const Title = styled.h3`
   font-size: 1.6rem;
   font-weight: 100;
   text-transform: uppercase;
+`
+
+export const AddButton = styled.button`
+  background: ${theme.color.red};
+  padding: 1rem;
+  margin-top: 0.5rem;
+  border: none;
+  border-radius: ${theme.radius.basic};
+  color: ${theme.color.white};
+  cursor: pointer;
 `

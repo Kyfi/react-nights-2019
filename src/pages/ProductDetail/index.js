@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
+import { loadProduct } from '../../store/product/actions'
+import { addProduct } from '../../store/cartItems/actions'
+
 import Layout from '../../components/Layout'
 import Loader from '../../components/Loader'
-
-import { addProduct } from '../../store/cartItems/actions'
-import { loadProduct } from '../../store/product/actions'
 
 import { getAuthRequest } from '../../api/getAuthRequest'
 import { productWithPrice } from '../../helpers/transform/productWithPrice'
@@ -44,13 +44,14 @@ class Product extends React.Component {
 
     return (
       <Layout>
-        {isLoading && <Loader />}
-        {product && (
+        {!isLoading ? (
           <ProductComponent
             node={product}
             key={product.id}
             addProduct={this.props.addProduct}
           />
+        ) : (
+          <Loader />
         )}
       </Layout>
     )

@@ -30,13 +30,12 @@ class Products extends Component {
   }
 
   render() {
-    const { products } = this.props
     return (
       <Layout>
         <H1 textAlign="center">E-Commerce app</H1>
         {this.state.isLoading && <Loader />}
         <ProductsWrap>
-          {products.map(product => (
+          {this.props.products.map(product => (
             <Product
               key={product.id}
               node={product}

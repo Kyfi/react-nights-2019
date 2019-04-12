@@ -1,4 +1,5 @@
 import React from 'react'
+
 import urls from '../../../../constants/urls'
 import {
   Wrapper,
@@ -22,7 +23,7 @@ const Product = ({ node, addProduct }) => (
       </TitleWrap>
       <Price>{node.price.formatted_amount}</Price>
       <AddButton
-        type="button"
+        type={'button'}
         onClick={evt => {
           evt.preventDefault()
           addProduct(node.id)

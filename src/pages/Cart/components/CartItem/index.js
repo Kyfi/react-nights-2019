@@ -8,7 +8,7 @@ import {
   CartItemButton,
 } from './styled'
 
-const CartItemComponent = ({ item, onRemoveFromCart }) => (
+const CartItemComponent = ({ item, removeProduct }) => (
   <>
     {item.quantity > 0 && (
       <CartItem>
@@ -23,7 +23,7 @@ const CartItemComponent = ({ item, onRemoveFromCart }) => (
         <CartItemQuantity>{item.quantity}</CartItemQuantity>
         <CartItemButton>
           <button
-            onClick={() => onRemoveFromCart(item.product.id)}
+            onClick={() => removeProduct(item.product.id)}
             type={'button'}
             title={'Delete this cart item'}
             aria-label={'Delete this cart item'}

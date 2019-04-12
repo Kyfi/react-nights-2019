@@ -7,11 +7,11 @@ const reducer = (state = {}, action) => {
         ...state,
         [action.payload]: (state[action.payload] || 0) + 1,
       }
-    case REMOVE_PRODUCT:
-      return {
-        ...state,
-        [action.payload]: (state[action.payload] || 0) - 1,
-      }
+    case REMOVE_PRODUCT: {
+      const nextState = Object.assign({}, state)
+      delete nextState[action.payload]
+      return nextState
+    }
     default:
       return state
   }

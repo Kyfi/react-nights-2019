@@ -23,14 +23,12 @@ const ProductComponent = ({ node, addProduct }) => (
     <Price>{node.price}</Price>
     <Description>{node.description}</Description>
     <Button
-      onClick={evt => {
-        evt.preventDefault()
+      onClick={() => {
         addProduct(node.id)
       }}
     >
       Add to Cart
     </Button>
-    {console.log(addProduct(node.id))}
   </ProductWrap>
 )
 

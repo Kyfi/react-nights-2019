@@ -8,10 +8,6 @@ import { CartItemsWrapper } from './styled'
 import { removeProduct } from '../../store/cartItems/actions'
 
 class CartView extends React.Component {
-  handleRemoveFromCart = productId => {
-    this.props.removeProduct(productId)
-  }
-
   render() {
     const { items } = this.props
 
@@ -32,7 +28,7 @@ class CartView extends React.Component {
                 <CartItemComponent
                   item={item}
                   key={item.product.id.toString()}
-                  onRemoveFromCart={this.handleRemoveFromCart}
+                  removeProduct={this.props.removeProduct}
                 />
               ))}
             </CartItemsWrapper>

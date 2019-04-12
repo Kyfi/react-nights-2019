@@ -1,4 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
+import urls from '../../../../constants/urls'
 import {
   CartItem,
   CartImgWrap,
@@ -19,7 +22,11 @@ const CartItemComponent = ({ item, removeProduct }) => (
             alt={`${item.product.name} image`}
           />
         </CartImgWrap>
-        <CartItemName>{item.product.name}</CartItemName>
+        <CartItemName>
+          <Link to={urls.productDetail(item.product.id)}>
+            {item.product.name}
+          </Link>
+        </CartItemName>
         <CartItemQuantity>{item.quantity}</CartItemQuantity>
         <CartItemButton>
           <button

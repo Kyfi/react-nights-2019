@@ -8,7 +8,7 @@ import { addProduct } from '../../store/cartItems/actions'
 import Layout from '../../components/Layout'
 import Loader from '../../components/Loader'
 
-import { getAuthRequest } from '../../api/getAuthRequest'
+import { api } from '../../api/apiClient'
 import { productWithPrice } from '../../helpers/transform/productWithPrice'
 import ProductComponent from './components/Product'
 
@@ -19,7 +19,7 @@ class Product extends React.Component {
 
   fetchProduct = async productId => {
     this.setState({ isLoading: true })
-    const productData = await getAuthRequest(`skus/${productId}?include=prices`)
+    const productData = await api(`/api/skus/${productId}?include=prices`)
     const product = productWithPrice(productData)
 
     this.props.loadProduct(product)

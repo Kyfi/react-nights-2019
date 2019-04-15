@@ -3,7 +3,7 @@ import { Field } from 'formik'
 
 import { Wrapper, Label, StyledInput, StyledError } from './styled'
 
-export const Input = ({ label, type = 'text' }) => (
+export const Input = ({ label, type = 'text', name }) => (
   <Field
     name={name}
     render={({ field, form }) => {

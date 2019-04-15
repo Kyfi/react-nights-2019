@@ -1,5 +1,4 @@
-/*
-import { api } from '../api-client'
+import { api } from '../apiClient'
 import config from '../../config'
 import { setToken } from '../../utils/token'
 
@@ -52,4 +51,3 @@ export const createCustomer = async ({ email, password, firstName }) => {
     }
   }
 }
-*/

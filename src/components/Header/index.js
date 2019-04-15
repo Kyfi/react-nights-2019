@@ -9,16 +9,20 @@ const links = [
     label: 'Homepage',
   },
   {
+    path: urls.myAccount,
+    label: 'My Account',
+  },
+  {
+    path: urls.cart,
+    label: 'Cart',
+  },
+  {
     path: urls.signUp,
     label: 'Sign Up',
   },
   {
     path: urls.signIn,
     label: 'Sign In',
-  },
-  {
-    path: urls.cart,
-    label: 'Cart',
   },
 ]
 

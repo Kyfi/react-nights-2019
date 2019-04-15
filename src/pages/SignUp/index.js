@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Formik } from 'formik'
 
-/*import { createCustomer } from '../../api/customers/create-customer'*/
+import { createCustomer } from '../../api/customers/createCustomer'
 import Layout from '../../components/Layout'
 import { H1 } from '../../components/Typography'
 import { Form, GlobalFormError } from '../../components/Form'
@@ -12,20 +12,25 @@ import { schema } from './schema'
 class SignUp extends Component {
   state = {
     globalError: '',
+    hasSignedUp: false,
   }
 
   initialValues = {
-    firstName: '',
-    email: '',
-    password: '',
-    passwordConfirm: '',
+    firstName: 'igor',
+    email: 'igor@seznam.cz',
+    password: 'genius123',
+    passwordConfirm: 'genius123',
   }
 
   handleSubmit = async (values, { setSubmitting }) => {
     try {
       setSubmitting(true)
-      /*await createCustomer(values)
-      this.props.history.push('/account')*/
+      console.log('success')
+      this.setState({
+        hasSignedUp: true,
+      })
+      await createCustomer(values)
+      this.props.history.push('/account')
     } catch (error) {
       this.setState({
         globalError: error.message,
@@ -34,8 +39,16 @@ class SignUp extends Component {
     setSubmitting(false)
   }
 
+  renderSuccess = () => (
+    <Layout>
+      <H1 textAlign={'center'}>You've signed up!</H1>
+    </Layout>
+  )
+
   render() {
     const { globalError } = this.state
+
+    if (this.state.hasSignedUp) return this.renderSuccess()
 
     return (
       <Layout>
@@ -58,8 +71,8 @@ class SignUp extends Component {
                 type="password"
                 label="Confirm password"
               />
-              <Button disabled={isSubmitting}>
-                {isSubmitting ? 'Signing Up...' : 'Sign Up'}
+              <Button type={'submit'} disabled={isSubmitting}>
+                {isSubmitting ? 'Signing Up' : 'Sign Up'}
               </Button>
             </Form>
           )}

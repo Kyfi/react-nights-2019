@@ -1,22 +1,28 @@
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
+
 import theme from '../../common/theme'
 
 export const Wrapper = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  margin-bottom: ${theme.space[1]};
+  flex-direction: column;
+  margin-bottom: 1.6rem;
 `
 
-export const Input = styled.input`
-  display: flex;
-  width: 100%;
-  padding: 6px 10px;
-  border: 1px solid lightgrey;
+export const StyledInput = styled.input`
+  border: 2px solid
+    ${({ hasError }) => (hasError ? theme.color.red : theme.color.gray)};
+  border-radius: ${theme.radius.basic};
+  font-size: ${theme.fontSize.medium};
+  font-weight: 100;
+  padding: 1rem 1.2rem;
 `
 
 export const Label = styled.label`
-  display: flex;
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-bottom: 3px;
+  font-size: ${theme.fontSize.medium};
+  margin-bottom: 0.6rem;
+`
+
+export const StyledError = styled.div`
+  color: ${theme.color.red};
+  margin-top: 0.4rem;
 `

@@ -12,7 +12,6 @@ import { schema } from './schema'
 class SignUp extends Component {
   state = {
     globalError: '',
-    hasSignedUp: false,
   }
 
   initialValues = {
@@ -25,12 +24,8 @@ class SignUp extends Component {
   handleSubmit = async (values, { setSubmitting }) => {
     try {
       setSubmitting(true)
-      console.log('success')
-      this.setState({
-        hasSignedUp: true,
-      })
       await createCustomer(values)
-      this.props.history.push('/account')
+      this.props.history.push('/my_account')
     } catch (error) {
       this.setState({
         globalError: error.message,
@@ -39,16 +34,8 @@ class SignUp extends Component {
     setSubmitting(false)
   }
 
-  renderSuccess = () => (
-    <Layout>
-      <H1 textAlign={'center'}>You've signed up!</H1>
-    </Layout>
-  )
-
   render() {
     const { globalError } = this.state
-
-    if (this.state.hasSignedUp) return this.renderSuccess()
 
     return (
       <Layout>

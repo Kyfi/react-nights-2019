@@ -1,10 +1,12 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-// TODO: connect to global state
-const isAuthenticated = false
-
-const PrivateRoute = ({ component: Component, ...rest }) => {
+const PrivateRouteComponent = ({
+  isAuthenticated,
+  component: Component,
+  ...rest
+}) => {
   return (
     <Route
       {...rest}
@@ -28,4 +30,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   )
 }
 
-export { PrivateRoute }
+const mapsStateToProps = state => ({
+  isAuthenticated: Object.keys(state.customer).length !== 0,
+})
+
+export const PrivateRoute = connect(mapsStateToProps)(PrivateRouteComponent)

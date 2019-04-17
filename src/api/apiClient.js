@@ -12,7 +12,7 @@ export const api = async (path, options) => {
   const res = await fetch(`${config.apiUrl}${path}`, {
     method: 'GET',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/vnd.api+json',
       Authorization: `Bearer ${token}`,
     },
     ...options,

@@ -1,41 +1,43 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 
-import { Wrapper, Nav, Link } from './styled'
+import { Wrapper, Nav, NavLeft, NavRight, Link } from './styled'
 import urls from '../../constants/urls'
+import { removeToken } from '../../utils/token'
+import { removeCustomer } from '../../utils/customer'
 
-const links = [
-  {
-    path: urls.index,
-    label: 'Homepage',
-  },
-  {
-    path: urls.myAccount,
-    label: 'My Account',
-  },
-  {
-    path: urls.cart,
-    label: 'Cart',
-  },
-  {
-    path: urls.signUp,
-    label: 'Sign Up',
-  },
-  {
-    path: urls.signIn,
-    label: 'Sign In',
-  },
-]
-
-const Header = () => (
+const Header = ({ isAuthenticated, logout, history }) => (
   <Wrapper>
     <Nav>
-      {links.map(link => (
-        <Link key={link.path.toString()} to={link.path}>
-          {link.label}
-        </Link>
-      ))}
+      <NavLeft>
+        <Link to={urls.index}>{'Product List'}</Link>
+      </NavLeft>
+      <NavRight>
+        {isAuthenticated ? (
+          <>
+            <Link to={urls.myAccount}>My Account</Link>
+            <Link
+              as="button"
+              onClick={() => {
+                logout()
+                removeToken()
+                removeCustomer()
+                history.push('/')
+              }}
+            >
+              Logout
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link to={urls.signIn}>Sign In</Link>
+            <Link to={urls.signUp}>Sign Up</Link>
+          </>
+        )}
+        <Link to={urls.cart}>{'My Cart'}</Link>
+      </NavRight>
     </Nav>
   </Wrapper>
 )
 
-export default Header
+export default withRouter(Header)

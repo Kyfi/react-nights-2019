@@ -8,6 +8,7 @@ import { Form, GlobalFormError } from '../../components/Form'
 import { Input } from '../../components/Input'
 import { Button } from '../../components/Button'
 import { schema } from './schema'
+import urls from '../../constants/urls'
 
 class SignUp extends Component {
   state = {
@@ -15,17 +16,17 @@ class SignUp extends Component {
   }
 
   initialValues = {
-    firstName: 'igor',
-    email: 'igor@seznam.cz',
-    password: 'genius123',
-    passwordConfirm: 'genius123',
+    firstName: '',
+    email: '',
+    password: '',
+    passwordConfirm: '',
   }
-
+  x
   handleSubmit = async (values, { setSubmitting }) => {
     try {
       setSubmitting(true)
       await createCustomer(values)
-      this.props.history.push('/my_account')
+      this.props.history.push(urls.index)
     } catch (error) {
       this.setState({
         globalError: error.message,

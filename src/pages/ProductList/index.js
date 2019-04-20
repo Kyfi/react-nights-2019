@@ -1,64 +1,57 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
+import qs from 'qs'
 
 import Layout from '../../components/Layout'
 import Loader from '../../components/Loader'
 import { H1 } from '../../components/Typography'
 
-import { api } from '../../api/apiClient'
-import { productsWithPrice } from '../../helpers/transform/productsWithPrice'
-
-import { addProduct } from '../../store/cartItems/actions'
-import { loadProducts } from '../../store/products/actions'
+import { getProducts } from '../../api/getProducts'
+import { useApi } from '../../api/useApi'
+import * as cartActions from '../../store/cartItems/actions'
 
 import { ProductsWrap } from './styled'
 import Product from './components/Product'
+import Pagination from '../../components/Pagination'
 
-class Products extends Component {
-  state = {
-    isLoading: true, // stop confusing users, what happening until fetch data
-  }
+const Products = ({ location, addProduct }) => {
+  const { page } = qs.parse(location.search.substr(1))
 
-  async componentDidMount() {
-    if (this.props.products.length === 0) {
-      const productsData = await api('/api/skus?include=prices')
-      const products = productsWithPrice(productsData)
-      this.props.loadProducts(products)
-    }
+  const { data: res, isLoading } = useApi(
+    () => getProducts({ page: { number: page } }),
+    [page]
+  )
 
-    this.setState({ isLoading: false })
-  }
+  const handleAddToCart = productId => addProduct(productId)
 
-  render() {
-    return (
-      <Layout>
-        <H1 textAlign="center">E-Commerce app</H1>
-        {this.state.isLoading && <Loader />}
-        <ProductsWrap>
-          {this.props.products.map(product => (
-            <Product
-              key={product.id}
-              node={product}
-              addProduct={this.props.addProduct}
-            />
-          ))}
-        </ProductsWrap>
-      </Layout>
-    )
-  }
+  return (
+    <Layout>
+      <H1 textAlign="center">E-Commerce app</H1>
+      {isLoading && <Loader />}
+      {res && (
+        <>
+          <Pagination pages={res.meta.page_count} />
+          <ProductsWrap>
+            {res.data.map(product => (
+              <Product
+                key={product.id}
+                node={product}
+                addProduct={handleAddToCart}
+              />
+            ))}
+          </ProductsWrap>
+        </>
+      )}
+    </Layout>
+  )
 }
 
-const mapStateToProps = state => ({
-  products: state.products,
-})
-
 const mapDispatchToProps = {
-  loadProducts,
-  addProduct,
+  addProduct: cartActions.addProduct,
 }
 
 const ProductList = connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Products)
 

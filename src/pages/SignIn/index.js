@@ -1,5 +1,6 @@
 import React from 'react'
 import { Formik } from 'formik'
+import { connect } from 'react-redux'
 
 import { H1 } from '../../components/Typography/'
 import Layout from '../../components/Layout'
@@ -9,8 +10,10 @@ import { Form, GlobalFormError } from '../../components/Form'
 import { schema } from './schema'
 import { getCustomerToken } from '../../api/customers/getCustomerToken'
 import { getCustomer } from '../../api/customers/getCustomer'
+import * as customerActions from '../../store/customer/actions'
+import urls from '../../constants/urls'
 
-class SignIn extends React.Component {
+class SignInPage extends React.Component {
   state = {
     globalError: '',
   }
@@ -29,10 +32,10 @@ class SignIn extends React.Component {
       })
       const customer = await getCustomer(ownerId)
       this.props.login(customer)
-      this.props.history.push('/account')
-    } catch (e) {
+      this.props.history.push(urls.myAccount)
+    } catch (error) {
       this.setState({
-        globalError: e.message,
+        globalError: error.message,
       })
     }
     setSubmitting(false)
@@ -53,7 +56,7 @@ class SignIn extends React.Component {
           {({ handleSubmit, isSubmitting }) => (
             <Form onSubmit={handleSubmit}>
               {Boolean(globalError) && (
-                <GlobalFormError>globalError</GlobalFormError>
+                <GlobalFormError>{globalError}</GlobalFormError>
               )}
               <Input name={'email'} label={'Email'} type={'email'} />
               <Input name={'password'} label={'Password'} type={'password'} />
@@ -68,4 +71,11 @@ class SignIn extends React.Component {
   }
 }
 
-export default SignIn
+const mapDispatchToProps = {
+  login: customerActions.login,
+}
+
+export const SignIn = connect(
+  null,
+  mapDispatchToProps
+)(SignInPage)

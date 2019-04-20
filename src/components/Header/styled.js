@@ -9,6 +9,15 @@ export const Wrapper = styled.div`
 export const Nav = styled.nav`
   background: white;
   display: flex;
+  justify-content: space-between;
+`
+
+export const NavLeft = styled.div`
+  display: flex;
+`
+
+export const NavRight = styled.div`
+  display: flex;
 `
 
 export const Link = styled(BaseLink)`
@@ -16,6 +25,12 @@ export const Link = styled(BaseLink)`
   color: ${theme.color.black};
   background-color: ${theme.color.white};
   padding: 20px;
+  border: 0;
   border-right: 1px solid lightgrey;
   white-space: nowrap;
+  font-weight: 300;
+
+  &:hover {
+    color: ${theme.color.purple};
+  }
 `

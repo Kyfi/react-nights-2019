@@ -1,5 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
+import urls from '../../../../constants/urls'
 import {
   ProductWrap,
   ImgWrap,
@@ -29,6 +31,8 @@ const ProductComponent = ({ node, addProduct }) => (
     >
       Add to Cart
     </Button>
+    <hr />
+    <Link to={urls.index}>Back to Product List</Link>
   </ProductWrap>
 )
 

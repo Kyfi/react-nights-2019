@@ -5,7 +5,7 @@ import Layout from '../../components/Layout'
 import Loader from '../../components/Loader'
 import { H1 } from '../../components/Typography'
 
-import { getAuthRequest } from '../../api/getAuthRequest'
+import { api } from '../../api/apiClient'
 import { productsWithPrice } from '../../helpers/transform/productsWithPrice'
 
 import { addProduct } from '../../store/cartItems/actions'
@@ -21,7 +21,7 @@ class Products extends Component {
 
   async componentDidMount() {
     if (this.props.products.length === 0) {
-      const productsData = await getAuthRequest('skus?include=prices')
+      const productsData = await api('/api/skus?include=prices')
       const products = productsWithPrice(productsData)
       this.props.loadProducts(products)
     }

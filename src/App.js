@@ -3,8 +3,13 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
 import Routes from './routes'
-import store from './store'
 import GlobalStyles from './globalStyles'
+import { getCustomer } from './utils/customer'
+import { configureStore } from './store'
+
+const store = configureStore({
+  customer: getCustomer(),
+})
 
 const App = () => (
   <Router>

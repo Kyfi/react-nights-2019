@@ -22,7 +22,7 @@ const Products = ({ location, addProduct, history }) => {
 
   const { data: res, isLoading } = useApi(
     () => getProducts({ page: { number: page, size: pageSize } }),
-    [page]
+    [page, page_size]
   )
 
   const handleAddToCart = productId => addProduct(productId)
@@ -60,7 +60,6 @@ const Products = ({ location, addProduct, history }) => {
                 history.push(
                   `${urls.productList}?page=1&page_size=${evt.target.value}`
                 )
-                console.log(location.search)
               }}
               name="page_size"
             >

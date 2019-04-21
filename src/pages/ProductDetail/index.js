@@ -1,79 +1,42 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-
-import { loadProduct } from '../../store/product/actions'
-import { addProduct } from '../../store/cartItems/actions'
 
 import Layout from '../../components/Layout'
 import Loader from '../../components/Loader'
 
-import { api } from '../../api/apiClient'
-import { productWithPrice } from '../../helpers/transform/productWithPrice'
 import ProductComponent from './components/Product'
+import * as cartActions from '../../store/cartItems/actions'
+import { useApi } from '../../api/useApi'
+import { getProductById } from '../../api/getProduct'
 
-class Product extends React.Component {
-  state = {
-    isLoading: true, // stop confusing users, what happening until fetch data
-  }
+const ProductView = ({ match, addProduct }) => {
+  const { productId } = match.params
 
-  fetchProduct = async productId => {
-    this.setState({ isLoading: true })
-    const productData = await api(`/api/skus/${productId}?include=prices`)
-    const product = productWithPrice(productData)
+  const { data: product, isLoading } = useApi(() => getProductById(productId), [
+    productId,
+  ])
 
-    this.props.loadProduct(product)
-    this.setState({ isLoading: false })
-  }
-
-  componentDidMount() {
-    const { productId } = this.props.match.params
-    this.fetchProduct(productId)
-  }
-
-  componentDidUpdate(prevProps) {
-    const { productId } = this.props.match.params
-    if (prevProps.match.params.productId !== productId) {
-      this.fetchProduct(productId)
-    }
-  }
-
-  render() {
-    const { product } = this.props
-    const { isLoading } = this.state
-
-    return (
-      <Layout>
-        {!isLoading ? (
-          <ProductComponent
-            node={product}
-            key={product.id}
-            addProduct={this.props.addProduct}
-          />
-        ) : (
-          <Loader />
-        )}
-      </Layout>
-    )
-  }
+  return (
+    <Layout>
+      {isLoading && <Loader />}
+      {product && (
+        <ProductComponent
+          node={product}
+          key={product.id}
+          addProduct={addProduct}
+        />
+      )}
+    </Layout>
+  )
 }
-
-Product.propTypes = {
-  match: PropTypes.any.isRequired,
-}
-
-const mapStateToProps = state => ({
-  product: state.product,
-})
 
 const mapDispatchToProps = {
-  loadProduct,
-  addProduct,
+  addProduct: cartActions.addProduct,
 }
 
 const ProductDetail = connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
-)(Product)
+)(ProductView)
 
 export { ProductDetail }

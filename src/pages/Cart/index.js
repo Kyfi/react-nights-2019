@@ -7,34 +7,32 @@ import { CartItemComponent } from './components/CartItem'
 import { CartItemsWrapper } from './styled'
 import * as cartActions from '../../store/cartItems/actions'
 
-const CartView = ({ items, removeProduct }) => {
-  return (
-    <Layout>
-      <H1>Cart</H1>
-      <div>
-        {items.length < 1 ? (
-          <>
-            <span role={'img'} aria-label={'Cart is so empty'}>
-              😢
-            </span>{' '}
-            Cart is so empty...
-          </>
-        ) : (
-          <CartItemsWrapper>
-            {items.map(item => (
-              <CartItemComponent
-                key={item.product.id}
-                productId={item.product.id}
-                quantity={item.quantity}
-                removeProduct={removeProduct}
-              />
-            ))}
-          </CartItemsWrapper>
-        )}
-      </div>
-    </Layout>
-  )
-}
+const CartView = ({ items, removeProduct }) => (
+  <Layout>
+    <H1>Cart</H1>
+    <div>
+      {items.length < 1 ? (
+        <>
+          <span role={'img'} aria-label={'Cart is so empty'}>
+            😢
+          </span>{' '}
+          Cart is so empty...
+        </>
+      ) : (
+        <CartItemsWrapper>
+          {items.map(item => (
+            <CartItemComponent
+              key={item.product.id}
+              productId={item.product.id}
+              quantity={item.quantity}
+              removeProduct={removeProduct}
+            />
+          ))}
+        </CartItemsWrapper>
+      )}
+    </div>
+  </Layout>
+)
 
 const mapStateToProps = state => ({
   items: Object.keys(state.cartItems).map(productId => ({

@@ -16,17 +16,17 @@ import { ProductsWrap } from './styled'
 import Product from './components/Product'
 import Pagination from '../../components/Pagination'
 import urls from '../../constants/urls'
+/*import { changePageSize } from '../../store/products/actions'*/
 
 const Products = ({ location, addProduct }) => {
   const { page } = qs.parse(location.search.substr(1))
 
   const defaultPageSize = 10
 
-  const handleOnChange = evt => {
-    console.log(evt.target.value)
-    // 1. call some getProducts with size: evt.target.value
-    // but i cant call useEffect hook inside function
-  }
+  /*const handleOnChange = evt => {
+    const pageSizes = evt.target.value
+    console.log (pageSizes)
+  }*/
 
   const { data: res, isLoading } = useApi(
     () => getProducts({ page: { number: page, size: defaultPageSize } }),
@@ -38,21 +38,36 @@ const Products = ({ location, addProduct }) => {
   return (
     <Layout>
       <H1 textAlign="center">E-Commerce app</H1>
+      <div>sss</div>
       {isLoading && <Loader />}
       {res && (
         <>
           <div>
-            {`Product ${
-              page === '1' ? '1' : (page - 1) * defaultPageSize + 1
-            } to ${page === undefined ? defaultPageSize : ''} ${
-              page !== undefined &&
-              res.meta.record_count > defaultPageSize * page
-                ? defaultPageSize * page
-                : res.meta.record_count
-            } of ${res.meta.record_count} `}
+            {`
+            Product
+            ${page === undefined ? '1' : ''}
+            ${page !== undefined && page === '1' ? '1' : ''}
+            ${
+              page !== undefined && page !== false && page !== '1'
+                ? (page - 1) * defaultPageSize + 1
+                : ''
+            }
+            to
+            ${page === undefined ? defaultPageSize : ''}
+            ${page !== undefined && page === '1' ? defaultPageSize : ''}
+            ${
+              page !== undefined && page !== false && page !== '1'
+                ? res.meta.record_count > defaultPageSize * page
+                  ? defaultPageSize * page
+                  : res.meta.record_count
+                : ''
+            }
+             of ${res.meta.record_count} `}
             <select
               id="pageSize"
-              onBlur={evt => handleOnChange(evt)}
+              onBlur={evt => {
+                evt.preventDefault()
+              }}
               name="page_size"
             >
               <option value={defaultPageSize}>{defaultPageSize}</option>
@@ -62,11 +77,11 @@ const Products = ({ location, addProduct }) => {
             </select>
             {' per page'}
           </div>
+          <Link to={`${urls.productList}`}>asdada</Link>
           <Pagination
             pages={res.meta.page_count}
             recors={res.meta.record_count}
           />
-          <Link to={`${urls.productList}?page=1&page=20`}>sssss</Link>
           <ProductsWrap>
             {res.data.map(product => (
               <Product

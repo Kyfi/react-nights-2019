@@ -6,9 +6,9 @@ import Layout from '../../components/Layout'
 import Loader from '../../components/Loader'
 import { H1 } from '../../components/Typography'
 
-import { getProducts } from '../../api/getProducts'
+import { getProducts } from '../../api/products/getProducts'
 import { useApi } from '../../api/useApi'
-import * as cartActions from '../../store/cartItems/actions'
+import * as cartActions from '../../store/cart/actions'
 
 import { ProductsWrap } from './styled'
 import Product from './components/Product'

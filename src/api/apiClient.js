@@ -1,6 +1,6 @@
 import config from '../config'
-import { getGuestToken } from './getGuestToken'
 import { getToken } from '../utils/token'
+import { getGuestToken } from './getGuestToken'
 
 export const api = async (path, options) => {
   let token = await getToken()

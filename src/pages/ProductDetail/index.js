@@ -5,9 +5,9 @@ import Layout from '../../components/Layout'
 import Loader from '../../components/Loader'
 
 import ProductComponent from './components/Product'
-import * as cartActions from '../../store/cartItems/actions'
+import * as cartActions from '../../store/cart/actions'
 import { useApi } from '../../api/useApi'
-import { getProductById } from '../../api/getProduct'
+import { getProductById } from '../../api/products/getProduct'
 
 const ProductView = ({ match, addProduct }) => {
   const { productId } = match.params

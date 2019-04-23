@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import urls from '../../../../constants/urls'
 import { useApi } from '../../../../api/useApi'
-import { getProductById } from '../../../../api/getProduct'
+import { getProductById } from '../../../../api/products/getProduct'
 import {
   CartItem,
   CartImgWrap,

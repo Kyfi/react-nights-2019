@@ -1,5 +1,5 @@
-import { api } from './apiClient'
-import { formatProduct } from './utils/format-product'
+import { api } from './../apiClient'
+import { formatProduct } from './../utils/formatProduct'
 
 export const getProductById = async id => {
   const { data, included } = await api(`/api/skus/${id}?include=prices`)

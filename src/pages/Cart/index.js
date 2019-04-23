@@ -5,32 +5,21 @@ import Layout from '../../components/Layout'
 import { H1 } from '../../components/Typography'
 import { CartItemComponent } from './components/CartItem'
 import { CartItemsWrapper } from './styled'
-import * as cartActions from '../../store/cartItems/actions'
+import * as cartActions from '../../store/cart/actions'
 
 const CartView = ({ items, removeProduct }) => (
   <Layout>
     <H1>Cart</H1>
-    <div>
-      {items.length < 1 ? (
-        <>
-          <span role={'img'} aria-label={'Cart is so empty'}>
-            😢
-          </span>{' '}
-          Cart is so empty...
-        </>
-      ) : (
-        <CartItemsWrapper>
-          {items.map(item => (
-            <CartItemComponent
-              key={item.product.id}
-              productId={item.product.id}
-              quantity={item.quantity}
-              removeProduct={removeProduct}
-            />
-          ))}
-        </CartItemsWrapper>
-      )}
-    </div>
+    <CartItemsWrapper>
+      {items.map(item => (
+        <CartItemComponent
+          key={item.product.id}
+          productId={item.product.id}
+          quantity={item.quantity}
+          removeProduct={removeProduct}
+        />
+      ))}
+    </CartItemsWrapper>
   </Layout>
 )
 

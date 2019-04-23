@@ -10,16 +10,27 @@ import * as cartActions from '../../store/cart/actions'
 const CartView = ({ items, removeProduct }) => (
   <Layout>
     <H1>Cart</H1>
-    <CartItemsWrapper>
-      {items.map(item => (
-        <CartItemComponent
-          key={item.product.id}
-          productId={item.product.id}
-          quantity={item.quantity}
-          removeProduct={removeProduct}
-        />
-      ))}
-    </CartItemsWrapper>
+    <div>
+      {items.length < 1 ? (
+        <>
+          <span role={'img'} aria-label={'Cart is so empty'}>
+            😢
+          </span>{' '}
+          Cart is so empty...
+        </>
+      ) : (
+        <CartItemsWrapper>
+          {items.map(item => (
+            <CartItemComponent
+              key={item.product.id}
+              productId={item.product.id}
+              quantity={item.quantity}
+              removeProduct={removeProduct}
+            />
+          ))}
+        </CartItemsWrapper>
+      )}
+    </div>
   </Layout>
 )
 

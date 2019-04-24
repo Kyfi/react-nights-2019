@@ -13,17 +13,17 @@ import { getCustomer } from '../../api/customers/getCustomer'
 import * as customerActions from '../../store/customer/actions'
 import urls from '../../constants/urls'
 
-class SignInPage extends React.Component {
-  state = {
+const SignInPage = ({ globalError, login, history }) => {
+  const state = {
     globalError: '',
   }
 
-  initialValues = {
+  const initialValues = {
     email: '',
     password: '',
   }
 
-  handleSubmit = async ({ email, password }, { setSubmitting }) => {
+  const handleOnSubmit = async ({ email, password }, { setSubmitting }) => {
     try {
       setSubmitting(true)
       const { ownerId } = await getCustomerToken({
@@ -31,44 +31,40 @@ class SignInPage extends React.Component {
         password,
       })
       const customer = await getCustomer(ownerId)
-      this.props.login(customer)
-      this.props.history.push(urls.myAccount)
+      login(customer)
+      history.push(urls.myAccount)
     } catch (error) {
-      this.setState({
+      state.setState({
         globalError: error.message,
       })
     }
     setSubmitting(false)
   }
 
-  render() {
-    const { globalError } = this.state
+  return (
+    <Layout>
+      <H1>Sign In</H1>
 
-    return (
-      <Layout>
-        <H1>Sign In</H1>
-
-        <Formik
-          initialValues={this.initialValues}
-          validationSchema={schema}
-          onSubmit={this.handleSubmit}
-        >
-          {({ handleSubmit, isSubmitting }) => (
-            <Form onSubmit={handleSubmit}>
-              {Boolean(globalError) && (
-                <GlobalFormError>{globalError}</GlobalFormError>
-              )}
-              <Input name={'email'} label={'Email'} type={'email'} />
-              <Input name={'password'} label={'Password'} type={'password'} />
-              <Button type={'submit'} disabled={isSubmitting}>
-                {isSubmitting ? 'Logging In..' : 'Log In'}
-              </Button>
-            </Form>
-          )}
-        </Formik>
-      </Layout>
-    )
-  }
+      <Formik
+        initialValues={initialValues}
+        validationSchema={schema}
+        onSubmit={handleOnSubmit}
+      >
+        {({ handleSubmit, isSubmitting }) => (
+          <Form onSubmit={handleSubmit}>
+            {Boolean(globalError) && (
+              <GlobalFormError>{globalError}</GlobalFormError>
+            )}
+            <Input name={'email'} label={'Email'} type={'email'} />
+            <Input name={'password'} label={'Password'} type={'password'} />
+            <Button type={'submit'} disabled={isSubmitting}>
+              {isSubmitting ? 'Logging In..' : 'Log In'}
+            </Button>
+          </Form>
+        )}
+      </Formik>
+    </Layout>
+  )
 }
 
 const mapDispatchToProps = {

@@ -1,64 +1,66 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
+import qs from 'qs'
 
 import Layout from '../../components/Layout'
 import Loader from '../../components/Loader'
 import { H1 } from '../../components/Typography'
 
-import { api } from '../../api/apiClient'
-import { productsWithPrice } from '../../helpers/transform/productsWithPrice'
-
-import { addProduct } from '../../store/cartItems/actions'
-import { loadProducts } from '../../store/products/actions'
+import { getProducts } from '../../api/products/getProducts'
+import { useApi } from '../../api/useApi'
+import * as cartActions from '../../store/cart/actions'
 
 import { ProductsWrap } from './styled'
 import Product from './components/Product'
+import Pagination from '../../components/Pagination'
+import PageSize from '../../components/PageSize'
 
-class Products extends Component {
-  state = {
-    isLoading: true, // stop confusing users, what happening until fetch data
-  }
+const Products = ({ location, addProduct, history }) => {
+  const { page, page_size } = qs.parse(location.search.substr(1))
 
-  async componentDidMount() {
-    if (this.props.products.length === 0) {
-      const productsData = await api('/api/skus?include=prices')
-      const products = productsWithPrice(productsData)
-      this.props.loadProducts(products)
-    }
+  const pageSize = page_size === undefined ? 25 : page_size
 
-    this.setState({ isLoading: false })
-  }
+  const { data: res, isLoading } = useApi(
+    () => getProducts({ page: { number: page, size: pageSize } }),
+    [page, page_size]
+  )
 
-  render() {
-    return (
-      <Layout>
-        <H1 textAlign="center">E-Commerce app</H1>
-        {this.state.isLoading && <Loader />}
-        <ProductsWrap>
-          {this.props.products.map(product => (
-            <Product
-              key={product.id}
-              node={product}
-              addProduct={this.props.addProduct}
-            />
-          ))}
-        </ProductsWrap>
-      </Layout>
-    )
-  }
+  const handleAddToCart = productId => addProduct(productId)
+
+  return (
+    <Layout>
+      <H1 textAlign="center">E-Commerce app</H1>
+      {isLoading && <Loader />}
+      {res && (
+        <>
+          <PageSize
+            history={history}
+            page={page}
+            pageSize={pageSize}
+            recordCount={res.meta.record_count}
+          />
+          <Pagination pages={res.meta.page_count} pageSize={pageSize} />
+          <ProductsWrap>
+            {res.data.map(product => (
+              <Product
+                key={product.id}
+                node={product}
+                addProduct={handleAddToCart}
+              />
+            ))}
+          </ProductsWrap>
+        </>
+      )}
+    </Layout>
+  )
 }
 
-const mapStateToProps = state => ({
-  products: state.products,
-})
-
 const mapDispatchToProps = {
-  loadProducts,
-  addProduct,
+  addProduct: cartActions.addProduct,
 }
 
 const ProductList = connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Products)
 

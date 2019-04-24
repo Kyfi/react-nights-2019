@@ -22,7 +22,7 @@ const ProductComponent = ({ node, addProduct }) => (
     <ImgWrap>
       <Img src={node.image_url} alt={`${node.name} image`} />
     </ImgWrap>
-    <Price>{node.price}</Price>
+    <Price>{node.price.formatted_amount}</Price>
     <Description>{node.description}</Description>
     <Button
       onClick={() => {

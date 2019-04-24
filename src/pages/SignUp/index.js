@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Formik } from 'formik'
 
 import { createCustomer } from '../../api/customers/createCustomer'
@@ -10,64 +10,60 @@ import { Button } from '../../components/Button'
 import { schema } from './schema'
 import urls from '../../constants/urls'
 
-class SignUp extends Component {
-  state = {
+const SignUp = ({ globalError, history }) => {
+  const state = {
     globalError: '',
   }
 
-  initialValues = {
+  const initialValues = {
     firstName: '',
     email: '',
     password: '',
     passwordConfirm: '',
   }
-  x
-  handleSubmit = async (values, { setSubmitting }) => {
+
+  const handleOnSubmit = async (values, { setSubmitting }) => {
     try {
       setSubmitting(true)
       await createCustomer(values)
-      this.props.history.push(urls.index)
+      history.push(urls.index)
     } catch (error) {
-      this.setState({
+      state.setState({
         globalError: error.message,
       })
     }
     setSubmitting(false)
   }
 
-  render() {
-    const { globalError } = this.state
-
-    return (
-      <Layout>
-        <H1 textAlign="center">Sign Up</H1>
-        <Formik
-          initialValues={this.initialValues}
-          validationSchema={schema}
-          onSubmit={this.handleSubmit}
-        >
-          {({ handleSubmit, isSubmitting }) => (
-            <Form onSubmit={handleSubmit}>
-              {Boolean(globalError) && (
-                <GlobalFormError>{globalError}</GlobalFormError>
-              )}
-              <Input name="firstName" label="First name" />
-              <Input name="email" type="email" label="Email address" />
-              <Input name="password" type="password" label="Password" />
-              <Input
-                name="passwordConfirm"
-                type="password"
-                label="Confirm password"
-              />
-              <Button type={'submit'} disabled={isSubmitting}>
-                {isSubmitting ? 'Signing Up' : 'Sign Up'}
-              </Button>
-            </Form>
-          )}
-        </Formik>
-      </Layout>
-    )
-  }
+  return (
+    <Layout>
+      <H1 textAlign="center">Sign Up</H1>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={schema}
+        onSubmit={handleOnSubmit}
+      >
+        {({ handleSubmit, isSubmitting }) => (
+          <Form onSubmit={handleSubmit}>
+            {Boolean(globalError) && (
+              <GlobalFormError>{globalError}</GlobalFormError>
+            )}
+            <Input name="firstName" label="First name" />
+            <Input name="email" type="email" label="Email address" />
+            <Input name="password" type="password" label="Password" />
+            <Input
+              name="passwordConfirm"
+              type="password"
+              label="Confirm password"
+            />
+            <Button type={'submit'} disabled={isSubmitting}>
+              {isSubmitting ? 'Signing Up' : 'Sign Up'}
+            </Button>
+          </Form>
+        )}
+      </Formik>
+    </Layout>
+  )
 }
 
 export { SignUp }

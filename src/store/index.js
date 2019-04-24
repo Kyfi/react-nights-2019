@@ -1,13 +1,9 @@
 import { createStore, combineReducers } from 'redux'
 
-import products from './products'
-import product from './product'
-import cartItems from './cartItems'
+import cartItems from './cart'
 import customer from './customer/reducer'
 
 const reducer = combineReducers({
-  products,
-  product,
   cartItems,
   customer,
 })

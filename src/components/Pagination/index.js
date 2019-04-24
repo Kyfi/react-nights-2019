@@ -5,14 +5,17 @@ import urls from '../../constants/urls'
 
 import { List, ListItem } from './styled'
 
-const renderPaginationItem = number => (
-  <ListItem key={number} to={`${urls.productList}?page=${number}`}>
+const renderPaginationItem = pageSize => number => (
+  <ListItem
+    key={number}
+    to={`${urls.productList}?page=${number}&page_size=${pageSize}`}
+  >
     {number}
   </ListItem>
 )
 
-const Pagination = ({ pages }) => (
-  <List>{map(renderPaginationItem, range(1, pages + 1))}</List>
+const Pagination = ({ pages, pageSize }) => (
+  <List>{map(renderPaginationItem(pageSize), range(1, pages + 1))}</List>
 )
 
 export default Pagination

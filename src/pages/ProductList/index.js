@@ -13,7 +13,7 @@ import * as cartActions from '../../store/cart/actions'
 import { ProductsWrap } from './styled'
 import Product from './components/Product'
 import Pagination from '../../components/Pagination'
-import urls from '../../constants/urls'
+import PageSize from '../../components/PageSize'
 
 const Products = ({ location, addProduct, history }) => {
   const { page, page_size } = qs.parse(location.search.substr(1))
@@ -33,47 +33,13 @@ const Products = ({ location, addProduct, history }) => {
       {isLoading && <Loader />}
       {res && (
         <>
-          <div>
-            {`
-            Product
-            ${page === undefined ? '1' : ''}
-            ${page !== undefined && page === '1' ? '1' : ''}
-            ${
-              page !== undefined && page !== false && page !== '1'
-                ? (page - 1) * pageSize + 1
-                : ''
-            }
-            to
-            ${page === undefined ? pageSize : ''}
-            ${page !== undefined && page === '1' ? pageSize : ''}
-            ${
-              page !== undefined && page !== false && page !== '1'
-                ? res.meta.record_count > pageSize * page
-                  ? pageSize * page
-                  : res.meta.record_count
-                : ''
-            }
-             of ${res.meta.record_count} `}
-            <select
-              id="pageSize"
-              onBlur={evt => {
-                history.push(
-                  `${urls.productList}?page=1&page_size=${evt.target.value}`
-                )
-              }}
-              name="page_size"
-            >
-              <option value="25">25</option>
-              <option value="50">50</option>
-              <option value="75">75</option>
-              <option value="100">100</option>
-            </select>
-            {' per page'}
-          </div>
-          <Pagination
-            pages={res.meta.page_count}
-            recors={res.meta.record_count}
+          <PageSize
+            history={history}
+            page={page}
+            pageSize={pageSize}
+            recordCount={res.meta.record_count}
           />
+          <Pagination pages={res.meta.page_count} pageSize={pageSize} />
           <ProductsWrap>
             {res.data.map(product => (
               <Product

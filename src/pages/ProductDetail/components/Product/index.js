@@ -13,6 +13,7 @@ import {
 } from './styled'
 
 import { Button } from '../../../../components/Button'
+import { toast } from 'react-toastify'
 
 const ProductComponent = ({ node, addProduct }) => (
   <ProductWrap>
@@ -27,6 +28,7 @@ const ProductComponent = ({ node, addProduct }) => (
     <Button
       onClick={() => {
         addProduct(node.id)
+        toast.success(`1x ${node.name} has been added to Cart`)
       }}
     >
       Add to Cart

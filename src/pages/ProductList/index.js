@@ -4,16 +4,13 @@ import qs from 'qs'
 
 import Layout from '../../components/Layout'
 import Loader from '../../components/Loader'
-import { H1 } from '../../components/Typography'
+import Product from './components/Product'
+import { Pagination } from '../../components/Pagination'
+import { ProductsWrap, ProductsWrapInner } from './styled'
 
 import { getProducts } from '../../api/products/getProducts'
 import { useApi } from '../../api/useApi'
 import * as cartActions from '../../store/cart/actions'
-
-import { ProductsWrap } from './styled'
-import Product from './components/Product'
-import Pagination from '../../components/Pagination'
-import PageSize from '../../components/PageSize'
 import { PAGE_DEFAULT, PAGE_SIZE_DEFAULT } from '../../constants/base'
 
 const Products = ({ location, addProduct, history }) => {
@@ -30,25 +27,26 @@ const Products = ({ location, addProduct, history }) => {
 
   return (
     <Layout>
-      <H1 textAlign="center">E-Commerce app</H1>
-      {isLoading && <Loader />}
+      {isLoading && <Loader centered />}
       {res && (
         <>
-          <PageSize
-            history={history}
+          <Pagination
+            pages={res.meta.page_count}
             page={page}
             pageSize={size}
             recordCount={res.meta.record_count}
+            history={history}
           />
-          <Pagination pages={res.meta.page_count} pageSize={size} />
           <ProductsWrap>
-            {res.data.map(product => (
-              <Product
-                key={product.id}
-                node={product}
-                addProduct={handleAddToCart}
-              />
-            ))}
+            <ProductsWrapInner>
+              {res.data.map(product => (
+                <Product
+                  key={product.id}
+                  node={product}
+                  addProduct={handleAddToCart}
+                />
+              ))}
+            </ProductsWrapInner>
           </ProductsWrap>
         </>
       )}

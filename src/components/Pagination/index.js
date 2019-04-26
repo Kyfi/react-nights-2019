@@ -3,7 +3,8 @@ import range from 'ramda/src/range'
 import map from 'ramda/src/map'
 import urls from '../../constants/urls'
 
-import { List, ListItem } from './styled'
+import { Container, List, ListItem } from './styled'
+import PageSize from '../PageSize'
 
 const renderPaginationItem = pageSize => number => (
   <ListItem
@@ -14,8 +15,16 @@ const renderPaginationItem = pageSize => number => (
   </ListItem>
 )
 
-const Pagination = ({ pages, pageSize }) => (
-  <List>{map(renderPaginationItem(pageSize), range(1, pages + 1))}</List>
+const Pagination = ({ pages, page, pageSize, recordCount, history }) => (
+  <Container>
+    <PageSize
+      history={history}
+      page={page}
+      pageSize={pageSize}
+      recordCount={recordCount}
+    />
+    <List>{map(renderPaginationItem(pageSize), range(1, pages + 1))}</List>
+  </Container>
 )
 
-export default Pagination
+export { Pagination }

@@ -6,6 +6,7 @@ import { ProductList } from './pages/ProductList'
 import { ProductDetail } from './pages/ProductDetail'
 import { SignUp } from './pages/SignUp'
 import { SignIn } from './pages/SignIn'
+import { Logout } from './pages/Logout'
 import { Cart } from './pages/Cart'
 import { Account } from './pages/Account'
 import { PrivateRoute } from './components/PrivateRoute'
@@ -22,6 +23,7 @@ const Routes = () => {
       <Route path={urls.productList} exact component={ProductList} />
       <Route path={urls.signUp} exact component={SignUp} />
       <Route path={urls.signIn} exact component={SignIn} />
+      <Route path={urls.logout} component={Logout} />
       <Route path={urls.cart} exact component={Cart} />
       <PrivateRoute path={urls.myAccount} component={Account} />
       <Route

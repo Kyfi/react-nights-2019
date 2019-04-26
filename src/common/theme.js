@@ -13,6 +13,7 @@ const theme = {
   },
   shadow: {
     basic: '0 0 5rem -1.3rem rgb(150, 150, 150)',
+    secondary: '0 0 10rem -1.3rem rgb(0, 0, 0)',
   },
   fontSize: {
     small: '1.2rem',

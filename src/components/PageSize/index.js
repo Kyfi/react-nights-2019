@@ -1,10 +1,9 @@
 import React from 'react'
 
 import urls from '../../constants/urls'
+import { PAGE_SIZE_DEFAULT, PAGE_SIZE_OPTIONS } from '../../constants/base'
 
 const PageSize = ({ page, pageSize, recordCount, history }) => {
-  const pageSizes = [25, 50, 75, 100]
-
   const onPageSizeChange = evt => {
     history.push(`${urls.productList}?page=1&page_size=${evt.target.value}`)
   }
@@ -36,8 +35,12 @@ const PageSize = ({ page, pageSize, recordCount, history }) => {
         onBlur={onPageSizeChange}
         name="page_size"
       >
-        {pageSizes.map(item => (
-          <option key={item.toString()} value={item}>
+        {PAGE_SIZE_OPTIONS.map(item => (
+          <option
+            selected={PAGE_SIZE_DEFAULT}
+            key={item.toString()}
+            value={item}
+          >
             {item}
           </option>
         ))}

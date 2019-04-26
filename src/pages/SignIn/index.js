@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Formik } from 'formik'
 import { connect } from 'react-redux'
 
@@ -13,15 +13,13 @@ import { getCustomer } from '../../api/customers/getCustomer'
 import * as customerActions from '../../store/customer/actions'
 import urls from '../../constants/urls'
 
-const SignInPage = ({ globalError, login, history }) => {
-  const state = {
-    globalError: '',
-  }
+const initialValues = {
+  email: '',
+  password: '',
+}
 
-  const initialValues = {
-    email: '',
-    password: '',
-  }
+const SignInPage = ({ login, history }) => {
+  const [globalError, setGlobalError] = useState('')
 
   const handleOnSubmit = async ({ email, password }, { setSubmitting }) => {
     try {
@@ -34,9 +32,7 @@ const SignInPage = ({ globalError, login, history }) => {
       login(customer)
       history.push(urls.myAccount)
     } catch (error) {
-      state.setState({
-        globalError: error.message,
-      })
+      setGlobalError(error.message)
     }
     setSubmitting(false)
   }

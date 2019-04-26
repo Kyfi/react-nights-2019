@@ -14,15 +14,16 @@ import { ProductsWrap } from './styled'
 import Product from './components/Product'
 import Pagination from '../../components/Pagination'
 import PageSize from '../../components/PageSize'
+import { PAGE_DEFAULT, PAGE_SIZE_DEFAULT } from '../../constants/base'
 
 const Products = ({ location, addProduct, history }) => {
-  const { page, page_size } = qs.parse(location.search.substr(1))
-
-  const pageSize = page_size === undefined ? 25 : page_size
+  const { page = PAGE_DEFAULT, page_size: size = PAGE_SIZE_DEFAULT } = qs.parse(
+    location.search.substr(1)
+  )
 
   const { data: res, isLoading } = useApi(
-    () => getProducts({ page: { number: page, size: pageSize } }),
-    [page, page_size]
+    () => getProducts({ page: { number: page, size: size } }),
+    [page, size]
   )
 
   const handleAddToCart = productId => addProduct(productId)
@@ -36,10 +37,10 @@ const Products = ({ location, addProduct, history }) => {
           <PageSize
             history={history}
             page={page}
-            pageSize={pageSize}
+            pageSize={size}
             recordCount={res.meta.record_count}
           />
-          <Pagination pages={res.meta.page_count} pageSize={pageSize} />
+          <Pagination pages={res.meta.page_count} pageSize={size} />
           <ProductsWrap>
             {res.data.map(product => (
               <Product

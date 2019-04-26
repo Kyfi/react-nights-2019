@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Formik } from 'formik'
 
 import { createCustomer } from '../../api/customers/createCustomer'
@@ -10,17 +10,15 @@ import { Button } from '../../components/Button'
 import { schema } from './schema'
 import urls from '../../constants/urls'
 
-const SignUp = ({ globalError, history }) => {
-  const state = {
-    globalError: '',
-  }
+const initialValues = {
+  firstName: '',
+  email: '',
+  password: '',
+  passwordConfirm: '',
+}
 
-  const initialValues = {
-    firstName: '',
-    email: '',
-    password: '',
-    passwordConfirm: '',
-  }
+const SignUp = ({ history }) => {
+  const [globalError, setGlobalError] = useState('')
 
   const handleOnSubmit = async (values, { setSubmitting }) => {
     try {
@@ -28,9 +26,7 @@ const SignUp = ({ globalError, history }) => {
       await createCustomer(values)
       history.push(urls.index)
     } catch (error) {
-      state.setState({
-        globalError: error.message,
-      })
+      setGlobalError(error.message)
     }
     setSubmitting(false)
   }

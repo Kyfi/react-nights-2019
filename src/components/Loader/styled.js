@@ -44,7 +44,7 @@ const LoaderWrap = styled.div`
     props.centered &&
     css`
       position: fixed;
-      top: 0;
+      top: 58px;
       right: 0;
       bottom: 0;
       left: 0;

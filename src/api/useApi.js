@@ -20,6 +20,8 @@ const useApi = (fn, resolveCondition = []) => {
 
   useEffect(request, resolveCondition)
 
+  console.log(data)
+
   return {
     request,
     data,

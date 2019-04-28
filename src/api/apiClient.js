@@ -7,6 +7,7 @@ import { getGuestToken } from './getGuestToken'
 import { refreshCustomerToken } from './customers/refreshCustomerToken'
 import { getToken } from '../utils/token'
 import { getRefreshToken } from '../utils/refreshToken'
+import { toast } from 'react-toastify'
 
 const makeRequest = (url, options, token) =>
   fetch(`${config.apiUrl}${url}`, {
@@ -53,6 +54,7 @@ export const api = async (url, options) => {
     return response.json()
   } catch (e) {
     // Place to handle global api errors
+    toast.error('Internet connection lost.. :(')
     throw e
   }
 }

@@ -13,6 +13,7 @@ import {
   CartItemButton,
 } from './styled'
 import Loader from '../../../../components/Loader'
+import { toast } from 'react-toastify'
 
 const CartItemComponent = ({ productId, quantity, removeProduct }) => {
   const { data: product, isLoading } = useApi(
@@ -38,7 +39,10 @@ const CartItemComponent = ({ productId, quantity, removeProduct }) => {
           <CartItemQuantity>{quantity}</CartItemQuantity>
           <CartItemButton>
             <button
-              onClick={() => removeProduct(product.id)}
+              onClick={() => {
+                removeProduct(product.id)
+                toast.success(`Product has been removed.`)
+              }}
               type={'button'}
               title={'Delete this cart item'}
               aria-label={'Delete this cart item'}

@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[components] Button should render correctly 1`] = `
+.c0 {
+  background: #ef0d33;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ef0d33;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.c0:focus {
+  outline: none;
+}
+
+.c0:hover {
+  background: transparent;
+  color: #ef0d33;
+}
+
+<div>
+  <button
+    class="c0"
+    type="button"
+  >
+    My Button
+  </button>
+</div>
+`;
+
+exports[`[components] Button when default should render correctly 1`] = `
+.c0 {
+  background: #ef0d33;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ef0d33;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  background: transparent;
+  color: #607d8b;
+  border-color: transparent;
+}
+
+.c0:focus {
+  outline: none;
+}
+
+.c0:hover {
+  background: transparent;
+  color: #ef0d33;
+}
+
+.c0:hover {
+  background: #607d8b;
+  color: #fff;
+}
+
+<div>
+  <button
+    class="c0"
+    default=""
+    type="button"
+  >
+    My Button
+  </button>
+</div>
+`;

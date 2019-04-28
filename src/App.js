@@ -9,13 +9,13 @@ import { getCustomer } from './utils/customer'
 import { configureStore } from './store'
 import { ErrorBoundary } from './components/ErrorBoundary'
 
-const store = configureStore({
+const defaultStore = configureStore({
   customer: getCustomer(),
 })
 
-const App = () => (
+const App = ({ store }) => (
   <Router>
-    <Provider store={store}>
+    <Provider store={store || defaultStore}>
       <React.Fragment>
         <GlobalStyles />
         <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
@@ -27,4 +27,4 @@ const App = () => (
   </Router>
 )
 
-export default App
+export { App }

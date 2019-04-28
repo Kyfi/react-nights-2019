@@ -11,9 +11,9 @@ describe('[components] Button', () => {
     expect(renderer.container).toMatchSnapshot()
   })
 
-  describe('when disabled', () => {
+  describe('when default', () => {
     it('should render correctly', () => {
-      const renderer = render(<Button disabled>My Button</Button>)
+      const renderer = render(<Button default>My Button</Button>)
       expect(renderer.container).toMatchSnapshot()
     })
   })

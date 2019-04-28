@@ -29,5 +29,7 @@ module.exports = {
     'no-shadow': [2, { allow: ['name'] }],
     // let's enforce this approach a bit
     'import/no-default-export': 1,
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
   },
 }

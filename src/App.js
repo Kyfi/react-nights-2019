@@ -1,5 +1,4 @@
 import React from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { ToastContainer, toast } from 'react-toastify'
 
@@ -14,17 +13,15 @@ const defaultStore = configureStore({
 })
 
 const App = ({ store }) => (
-  <Router>
-    <Provider store={store || defaultStore}>
-      <React.Fragment>
-        <GlobalStyles />
-        <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
-        <ErrorBoundary>
-          <Routes />
-        </ErrorBoundary>
-      </React.Fragment>
-    </Provider>
-  </Router>
+  <Provider store={store || defaultStore}>
+    <React.Fragment>
+      <GlobalStyles />
+      <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />
+      <ErrorBoundary>
+        <Routes />
+      </ErrorBoundary>
+    </React.Fragment>
+  </Provider>
 )
 
 export { App }

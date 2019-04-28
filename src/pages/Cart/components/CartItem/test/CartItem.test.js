@@ -2,12 +2,12 @@ import React from 'react'
 import { waitForElement } from 'react-testing-library'
 import 'jest-styled-components'
 
-import { App } from '../../../../App'
-import urls from '../../../../constants/urls'
-import { renderWithRouter } from '../../../../utilsTest/render'
-import { mockFetchProduct } from '../../../../utilsTest/mockHelpers'
-import { configureStore } from '../../../../store'
-import { getCustomer } from '../../../../utils/customer'
+import { App } from '../../../../../App'
+import urls from '../../../../../constants/urls'
+import { renderWithRouter } from '../../../../../utilsTest/render'
+import { mockFetchProduct } from '../../../../../utilsTest/mockHelpers'
+import { configureStore } from '../../../../../store'
+import { getCustomer } from '../../../../../utils/customer'
 
 describe('[pages] Cart', () => {
   describe('when loading', () => {

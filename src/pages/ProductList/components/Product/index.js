@@ -16,7 +16,7 @@ import { Button } from '../../../../components/Button'
 import { toast } from 'react-toastify'
 
 const Product = ({ node, addProduct }) => (
-  <Wrapper>
+  <Wrapper data-testid="product-in-list">
     <Inner>
       <ImgWrap>
         <Link to={urls.productDetail(node.id)}>

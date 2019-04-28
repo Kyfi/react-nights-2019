@@ -57,7 +57,7 @@ describe('[pages] SignIn', () => {
 
         fireEvent.click(formSubmitButton)
         const HTMLDivElement = await waitForElement(() =>
-          renderer.getByTestId('account-page')
+          renderer.queryAllByText('account-page')
         )
         expect(HTMLDivElement).toBeTruthy()
       })

@@ -13,7 +13,7 @@ const renderPaginationItem = (pageSize, page) => number => {
     <ListItem
       key={number}
       to={`${urls.productList}?page=${number}&page_size=${pageSize}`}
-      isCurrentPage={isCurrentPage ? 1 : 0}
+      iscurrentpage={isCurrentPage ? 1 : 0}
     >
       {number}
     </ListItem>

@@ -26,7 +26,7 @@ const Products = ({ location, addProduct, history }) => {
   const handleAddToCart = productId => addProduct(productId)
 
   return (
-    <Layout dataTestid="product-in-list">
+    <Layout>
       {isLoading && <Loader centered />}
       {res && (
         <>
@@ -38,7 +38,7 @@ const Products = ({ location, addProduct, history }) => {
             history={history}
           />
           <ProductsWrap>
-            <ProductsWrapInner>
+            <ProductsWrapInner data-testid={'products-in-list'}>
               {res.data.map(product => (
                 <Product
                   key={product.id}

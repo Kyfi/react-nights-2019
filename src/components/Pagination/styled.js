@@ -39,8 +39,8 @@ export const ListItem = styled(BaseLink)`
     background: ${theme.color.purpleLight};
   }
 
-  ${({ isCurrentPage }) =>
-    isCurrentPage &&
+  ${({ iscurrentpage }) =>
+    iscurrentpage &&
     css`
       background: ${theme.color.purple};
       color: ${theme.color.white};

@@ -22,7 +22,6 @@ const ProductView = ({ match, addProduct }) => {
       {product && (
         <div data-testid="product-detail">
           <ProductComponent
-            variant={'detail'}
             node={product}
             key={product.id}
             addProduct={addProduct}

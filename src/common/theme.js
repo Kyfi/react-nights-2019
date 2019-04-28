@@ -1,11 +1,13 @@
 const theme = {
   color: {
     black: '#252522',
-    softGray: '#f9f9f9',
+    grayDark: '#607d8b',
     gray: '#e5e5e5',
+    softGray: '#f9f9f9',
+    white: '#fff',
     primary: '#f8cb00',
     purple: '#6364d9',
-    white: '#fff',
+    purpleLight: 'rgba(99, 100, 217, 0.2)',
     red: '#ef0d33',
   },
   radius: {

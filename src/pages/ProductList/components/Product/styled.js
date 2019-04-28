@@ -23,10 +23,26 @@ export const Wrapper = styled.li`
   }
 `
 
+export const ImgWrap = styled.div`
+  height: 16rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`
+
+export const Price = styled.div`
+  color: ${theme.color.red};
+  font-size: 1.8rem;
+  margin-top: 2rem;
+`
+
 export const Link = styled(BaseLink)`
   text-decoration: none;
   color: initial;
-  background-color: ${theme.color.white};
+`
+
+export const Inner = styled.div`
+  background: white;
   padding: 3rem 2rem;
   display: flex;
   flex-direction: column;
@@ -44,19 +60,6 @@ export const Link = styled(BaseLink)`
       transform: scale(1.1);
     }
   }
-`
-
-export const ImgWrap = styled.div`
-  height: 16rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`
-
-export const Price = styled.div`
-  color: ${theme.color.red};
-  font-size: 1.8rem;
-  margin-top: 2rem;
 `
 
 export const Img = styled.img`

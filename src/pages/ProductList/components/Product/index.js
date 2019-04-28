@@ -1,16 +1,27 @@
 import React from 'react'
 
 import urls from '../../../../constants/urls'
-import { Wrapper, ImgWrap, Img, TitleWrap, Title, Price, Link } from './styled'
+import {
+  Wrapper,
+  Inner,
+  ImgWrap,
+  Img,
+  TitleWrap,
+  Title,
+  Price,
+  Link,
+} from './styled'
 import { ButtonGroup } from '../../../../components/Typography'
 import { Button } from '../../../../components/Button'
 import { toast } from 'react-toastify'
 
 const Product = ({ node, addProduct }) => (
   <Wrapper>
-    <Link to={urls.productDetail(node.id)}>
+    <Inner>
       <ImgWrap>
-        <Img src={node.image_url} alt={`${node.name} image`} />
+        <Link to={urls.productDetail(node.id)}>
+          <Img src={node.image_url} alt={`${node.name} image`} />
+        </Link>
       </ImgWrap>
       <TitleWrap>
         <Title>{node.name}</Title>
@@ -26,9 +37,11 @@ const Product = ({ node, addProduct }) => (
         >
           Add to Cart
         </Button>
-        <Button default>Show Detail</Button>
+        <Link to={urls.productDetail(node.id)}>
+          <Button default>Show Detail</Button>
+        </Link>
       </ButtonGroup>
-    </Link>
+    </Inner>
   </Wrapper>
 )
 

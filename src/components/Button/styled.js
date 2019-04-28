@@ -11,18 +11,6 @@ export const Button = styled.button`
   cursor: pointer;
   transition: all 0.3s;
 
-  ${props =>
-    props.default &&
-    css`
-      background: transparent;
-      color: ${theme.color.red};
-
-      :hover {
-        background: ${theme.color.red};
-        color: ${theme.color.white};
-      }
-    `};
-
   &:focus {
     outline: none;
   }
@@ -31,4 +19,17 @@ export const Button = styled.button`
     background: transparent;
     color: ${theme.color.red};
   }
+
+  ${props =>
+    props.default &&
+    css`
+      background: transparent;
+      color: ${theme.color.grayDark};
+      border-color: transparent;
+
+      &:hover {
+        background: ${theme.color.grayDark};
+        color: ${theme.color.white};
+      }
+    `};
 `

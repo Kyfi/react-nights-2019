@@ -33,9 +33,14 @@ export const ListItem = styled(BaseLink)`
   border-radius: 3px;
   text-decoration: none;
   margin: 2px;
+  transition: all 0.3s;
 
-  ${({ active }) =>
-    active &&
+  &:hover {
+    background: ${theme.color.purpleLight};
+  }
+
+  ${({ isCurrentPage }) =>
+    isCurrentPage &&
     css`
       background: ${theme.color.purple};
       color: ${theme.color.white};

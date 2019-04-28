@@ -26,7 +26,7 @@ const Products = ({ location, addProduct, history }) => {
   const handleAddToCart = productId => addProduct(productId)
 
   return (
-    <Layout>
+    <Layout dataTestid="product-in-list">
       {isLoading && <Loader centered />}
       {res && (
         <>

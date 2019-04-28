@@ -1,5 +1,4 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { Layout as LayoutBase } from './styled'
@@ -16,4 +15,4 @@ const mapStateToProps = state => ({
   isAuthenticated: Object.keys(state.customer).length !== 0,
 })
 
-export default withRouter(connect(mapStateToProps)(Layout))
+export default connect(mapStateToProps)(Layout)

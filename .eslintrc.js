@@ -13,6 +13,7 @@ module.exports = {
     es6: true,
     jest: true,
     node: true,
+    'cypress/globals': true,
   },
   parser: 'babel-eslint',
   parserOptions: {

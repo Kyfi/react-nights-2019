@@ -20,12 +20,14 @@ const ProductView = ({ match, addProduct }) => {
     <Layout>
       {isLoading && <Loader />}
       {product && (
-        <ProductComponent
-          variant={'detail'}
-          node={product}
-          key={product.id}
-          addProduct={addProduct}
-        />
+        <div data-testid="product-detail">
+          <ProductComponent
+            variant={'detail'}
+            node={product}
+            key={product.id}
+            addProduct={addProduct}
+          />
+        </div>
       )}
     </Layout>
   )

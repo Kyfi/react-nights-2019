@@ -23,8 +23,8 @@ const CartItemComponent = ({ productId, quantity, removeProduct }) => {
   return (
     <CartItem key={productId}>
       {isLoading && <Loader small />}
-      {product && (
-        <>
+      {!isLoading && (
+        <div data-testid="product-in-cart">
           <CartImgWrap>
             <CartImg
               width={40}
@@ -46,7 +46,7 @@ const CartItemComponent = ({ productId, quantity, removeProduct }) => {
               x
             </button>
           </CartItemButton>
-        </>
+        </div>
       )}
     </CartItem>
   )

@@ -1,0 +1,178 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[pages] Cart when loading should render correctly 1`] = `
+.c5 {
+  padding: 2rem;
+}
+
+.c0 {
+  position: relative;
+  z-index: 1;
+}
+
+.c1 {
+  background: white;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  box-shadow: 0 0 5rem -1.3rem rgb(150,150,150);
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c3 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: #252522;
+  background-color: #fff;
+  padding: 20px;
+  border: 0;
+  border-right: 1px solid lightgrey;
+  white-space: nowrap;
+  font-weight: 300;
+}
+
+.c3:hover {
+  color: #6364d9;
+}
+
+.c6 {
+  width: 100%;
+  padding: 5rem 0;
+  padding: 5rem 0;
+  position: fixed;
+  top: 58px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.6);
+  z-index: 2;
+}
+
+.c7 {
+  width: 5rem;
+  height: 5rem;
+  margin: 0 auto;
+}
+
+.c8 {
+  -webkit-animation: cZxgpV 2s linear infinite;
+  animation: cZxgpV 2s linear infinite;
+  height: 100%;
+  -webkit-transform-origin: center center;
+  -ms-transform-origin: center center;
+  transform-origin: center center;
+  width: 100%;
+}
+
+.c9 {
+  stroke: #ef0d33;
+  stroke-dasharray: 1,200;
+  stroke-dashoffset: 0;
+  -webkit-animation: iwIXhf 1.5s ease-in-out infinite;
+  animation: iwIXhf 1.5s ease-in-out infinite;
+  stroke-linecap: round;
+}
+
+<div>
+  <div
+    class="Toastify"
+  />
+  <div
+    class="c0"
+  >
+    <nav
+      class="c1"
+    >
+      <div
+        class="c2"
+      >
+        <a
+          class="c3"
+          href="/"
+        >
+          Product List
+        </a>
+      </div>
+      <div
+        class="c4"
+      >
+        <a
+          class="c3"
+          href="/sign_in"
+        >
+          Sign In
+        </a>
+        <a
+          class="c3"
+          href="/sign_up"
+        >
+          Sign Up
+        </a>
+        <a
+          class="c3"
+          href="/cart"
+        >
+          My Cart
+        </a>
+      </div>
+    </nav>
+  </div>
+  <div
+    class="c5"
+  >
+    <div
+      class="c6"
+      data-testid="loader"
+    >
+      <div
+        class="c7"
+      >
+        <svg
+          class="c8"
+          viewBox="25 25 50 50"
+        >
+          <circle
+            class="c9"
+            cx="50"
+            cy="50"
+            fill="none"
+            r="20"
+            stroke-miterlimit="10"
+            stroke-width="4"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+`;

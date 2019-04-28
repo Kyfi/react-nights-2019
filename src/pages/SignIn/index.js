@@ -41,7 +41,7 @@ const SignInPage = ({ login, history }) => {
   }
 
   return (
-    <Layout>
+    <Layout dataTestId="login-page">
       <H1>Sign In</H1>
 
       <Formik

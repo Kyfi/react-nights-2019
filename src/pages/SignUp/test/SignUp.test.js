@@ -32,7 +32,7 @@ const fillInSignUpForm = renderer => {
 describe('[pages] SignUp', () => {
   it('should render correctly', () => {
     const renderer = renderWithRouter(<App />, urls.signUp)
-    const HTMLDivElement = renderer.getByTestId('signup-page')
+    const HTMLDivElement = renderer.getByText('Sign Up')
     expect(HTMLDivElement).toBeTruthy()
   })
 
@@ -61,10 +61,10 @@ describe('[pages] SignUp', () => {
         mockSignUp201()
 
         fireEvent.click(formSubmitButton)
-        const HTMLDivElement = await waitForElement(() =>
-          renderer.getByTestId('account-page')
+        const H1HTMLElement = await waitForElement(() =>
+          renderer.getByText(`Welcome ${USER.firstName}`)
         )
-        expect(HTMLDivElement).toBeTruthy()
+        expect(H1HTMLElement).toBeTruthy()
       })
     })
   })

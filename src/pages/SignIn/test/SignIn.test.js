@@ -27,7 +27,7 @@ const fillInSignInForm = renderer => {
 describe('[pages] SignIn', () => {
   it('should render correctly', () => {
     const renderer = renderWithRouter(<App />, urls.signIn)
-    const HTMLDivElement = renderer.getByTestId('login-page')
+    const HTMLDivElement = renderer.getByText('Sign In')
     expect(HTMLDivElement).toBeTruthy()
   })
 

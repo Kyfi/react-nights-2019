@@ -42,7 +42,7 @@ const SignInPage = ({ login, history }) => {
 
   return (
     <Layout dataTestId="login-page">
-      <H1>Sign In</H1>
+      <H1 textAlign="center">Sign In</H1>
 
       <Formik
         initialValues={initialValues}

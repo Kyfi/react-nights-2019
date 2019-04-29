@@ -7,7 +7,7 @@ import { renderWithRouter } from '../../../utilsTest/render'
 describe('[pages] NotFound', () => {
   it('should render correctly', () => {
     const renderer = renderWithRouter(<App />, '/not-implemented')
-    const HTMLDivElement = renderer.getByTestId('not-found-page')
+    const HTMLDivElement = renderer.getByText('Not Found')
     expect(HTMLDivElement).toBeTruthy()
   })
 })

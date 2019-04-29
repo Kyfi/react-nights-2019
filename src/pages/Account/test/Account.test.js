@@ -11,7 +11,7 @@ describe('[pages] Account', () => {
   describe('when not logged in', () => {
     it('should redirect to login page', () => {
       const renderer = renderWithRouter(<App />, urls.myAccount)
-      const HTMLDivElement = renderer.getByTestId('login-page')
+      const HTMLDivElement = renderer.getByText('Sign In')
       expect(HTMLDivElement).toBeTruthy()
     })
   })
@@ -29,7 +29,7 @@ describe('[pages] Account', () => {
       })
 
       const renderer = renderWithRouter(<App store={store} />, urls.myAccount)
-      const H1HtmlElement = renderer.getByTestId('account-page')
+      const H1HtmlElement = renderer.getByText(`Welcome ${USER.firstName}`)
       expect(H1HtmlElement).toBeTruthy()
     })
   })

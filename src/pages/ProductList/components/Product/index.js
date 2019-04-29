@@ -10,13 +10,14 @@ import {
   Title,
   Price,
   Link,
+  Footer,
 } from './styled'
-import { ButtonGroup } from '../../../../components/Typography'
 import { Button } from '../../../../components/Button'
 import { toast } from 'react-toastify'
 
 const Product = ({ node, addProduct }) => (
   <Wrapper data-testid="product-in-list">
+    {console.log(node)}
     <Inner>
       <ImgWrap>
         <Link to={urls.productDetail(node.id)}>
@@ -24,22 +25,22 @@ const Product = ({ node, addProduct }) => (
         </Link>
       </ImgWrap>
       <TitleWrap>
-        <Title>{node.name}</Title>
+        <Title>
+          <Link to={urls.productDetail(node.id)}>{node.name}</Link>
+        </Title>
       </TitleWrap>
-      <Price>{node.price.formatted_amount}</Price>
-      <ButtonGroup>
+      <Footer>
+        <Price>{node.price.formatted_amount}</Price>
         <Button
           data-testid={'add-to-cart'}
-          onClick={evt => {
-            evt.preventDefault()
+          onClick={() => {
             addProduct(node.id)
             toast.success(`1x ${node.name} has been added to Cart`)
           }}
         >
           Add to Cart
         </Button>
-        <Link to={urls.productDetail(node.id)}>Show Detail</Link>
-      </ButtonGroup>
+      </Footer>
     </Inner>
   </Wrapper>
 )

@@ -17,13 +17,3 @@ export const H1 = styled.h1`
 export const H3 = styled.h3`
   ${headerFonts}
 `
-
-export const ButtonGroup = styled.div`
-  display: flex;
-
-  > * {
-    + * {
-      margin-left: 5px;
-    }
-  }
-`

@@ -6,6 +6,7 @@ import { useApi } from '../../../../api/useApi'
 import { getProductById } from '../../../../api/products/getProduct'
 import {
   CartItem,
+  CartItemInner,
   CartImgWrap,
   CartImg,
   CartItemName,
@@ -25,7 +26,7 @@ const CartItemComponent = ({ productId, quantity, removeProduct }) => {
     <CartItem key={productId}>
       {isLoading && <Loader small />}
       {product && (
-        <div data-testid="product-in-cart">
+        <CartItemInner data-testid="product-in-cart">
           <CartImgWrap>
             <CartImg
               width={40}
@@ -50,7 +51,7 @@ const CartItemComponent = ({ productId, quantity, removeProduct }) => {
               x
             </button>
           </CartItemButton>
-        </div>
+        </CartItemInner>
       )}
     </CartItem>
   )

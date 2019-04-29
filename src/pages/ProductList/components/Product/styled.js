@@ -33,7 +33,6 @@ export const ImgWrap = styled.div`
 export const Price = styled.div`
   color: ${theme.color.red};
   font-size: 1.8rem;
-  margin-top: 2rem;
 `
 
 export const Link = styled(BaseLink)`
@@ -79,4 +78,25 @@ export const Title = styled.h3`
   font-size: 1.6rem;
   font-weight: 100;
   text-transform: uppercase;
+
+  ${Link} {
+    display: block;
+  }
+
+  &:hover {
+    ${Link} {
+      text-decoration: underline;
+    }
+  }
+`
+
+export const Footer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  button {
+    margin-top: 0;
+  }
 `

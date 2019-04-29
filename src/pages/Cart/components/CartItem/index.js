@@ -17,14 +17,14 @@ import Loader from '../../../../components/Loader'
 import { toast } from 'react-toastify'
 
 const CartItemComponent = ({ productId, quantity, removeProduct }) => {
-  const { data: product, isLoading } = useApi(
-    () => getProductById(productId),
-    productId
-  )
+  const { data: product, isLoading } = useApi(() => getProductById(productId), [
+    productId,
+  ])
 
   return (
     <CartItem key={productId}>
       {isLoading && <Loader small />}
+      {console.log(product)}
       {product && (
         <CartItemInner data-testid="product-in-cart">
           <CartImgWrap>

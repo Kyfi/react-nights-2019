@@ -17,7 +17,6 @@ import { toast } from 'react-toastify'
 
 const Product = ({ node, addProduct }) => (
   <Wrapper data-testid="product-in-list">
-    {console.log(node)}
     <Inner>
       <ImgWrap>
         <Link to={urls.productDetail(node.id)}>

@@ -1,11 +1,12 @@
 import React from 'react'
 
 import { H1 } from '../../components/Typography'
+import Layout from '../../components/Layout'
 
 const NotFound = () => (
-  <div data-testid="not-found-page">
+  <Layout>
     <H1>Not Found</H1>
-  </div>
+  </Layout>
 )
 
 export { NotFound }

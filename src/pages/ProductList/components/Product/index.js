@@ -29,6 +29,7 @@ const Product = ({ node, addProduct }) => (
       <Price>{node.price.formatted_amount}</Price>
       <ButtonGroup>
         <Button
+          data-testid={'add-to-cart'}
           onClick={evt => {
             evt.preventDefault()
             addProduct(node.id)
@@ -37,9 +38,7 @@ const Product = ({ node, addProduct }) => (
         >
           Add to Cart
         </Button>
-        <Link to={urls.productDetail(node.id)}>
-          <Button default>Show Detail</Button>
-        </Link>
+        <Link to={urls.productDetail(node.id)}>Show Detail</Link>
       </ButtonGroup>
     </Inner>
   </Wrapper>

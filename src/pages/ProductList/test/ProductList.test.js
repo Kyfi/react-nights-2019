@@ -6,7 +6,7 @@ import { App } from '../../../App'
 import urls from '../../../constants/urls'
 import { renderWithRouter } from '../../../utilsTest/render'
 import { mockFetchProducts } from '../../../utilsTest/mockHelpers'
-/*import { PRODUCTS } from '../../../utilsTest/mockData'*/
+import { PRODUCTS } from '../../../utilsTest/mockData'
 
 describe('[pages] ProductsList', () => {
   describe('when loading', () => {
@@ -23,8 +23,7 @@ describe('[pages] ProductsList', () => {
       const renderer = renderWithRouter(<App />, urls.productList)
       await waitForElement(() => renderer.getByTestId('products-in-list'))
       expect(renderer.getAllByTestId('product-in-list').length).toEqual(
-        /*PRODUCTS.data.length*/
-        4
+        PRODUCTS.data.length
       )
     })
   })

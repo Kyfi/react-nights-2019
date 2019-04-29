@@ -24,7 +24,6 @@ const CartItemComponent = ({ productId, quantity, removeProduct }) => {
   return (
     <CartItem key={productId}>
       {isLoading && <Loader small />}
-      {console.log(product)}
       {product && (
         <CartItemInner data-testid="product-in-cart">
           <CartImgWrap>

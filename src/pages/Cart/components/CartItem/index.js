@@ -6,6 +6,7 @@ import { useApi } from '../../../../api/useApi'
 import { getProductById } from '../../../../api/products/getProduct'
 import {
   CartItem,
+  CartItemInner,
   CartImgWrap,
   CartImg,
   CartItemName,
@@ -13,18 +14,18 @@ import {
   CartItemButton,
 } from './styled'
 import Loader from '../../../../components/Loader'
+import { toast } from 'react-toastify'
 
 const CartItemComponent = ({ productId, quantity, removeProduct }) => {
-  const { data: product, isLoading } = useApi(
-    () => getProductById(productId),
-    productId
-  )
+  const { data: product, isLoading } = useApi(() => getProductById(productId), [
+    productId,
+  ])
 
   return (
     <CartItem key={productId}>
       {isLoading && <Loader small />}
       {product && (
-        <>
+        <CartItemInner data-testid="product-in-cart">
           <CartImgWrap>
             <CartImg
               width={40}
@@ -38,7 +39,10 @@ const CartItemComponent = ({ productId, quantity, removeProduct }) => {
           <CartItemQuantity>{quantity}</CartItemQuantity>
           <CartItemButton>
             <button
-              onClick={() => removeProduct(product.id)}
+              onClick={() => {
+                removeProduct(product.id)
+                toast.success(`Product has been removed.`)
+              }}
               type={'button'}
               title={'Delete this cart item'}
               aria-label={'Delete this cart item'}
@@ -46,7 +50,7 @@ const CartItemComponent = ({ productId, quantity, removeProduct }) => {
               x
             </button>
           </CartItemButton>
-        </>
+        </CartItemInner>
       )}
     </CartItem>
   )

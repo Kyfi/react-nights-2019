@@ -24,6 +24,7 @@ const dash = keyframes`
 
 const LoaderWrap = styled.div`
   width: 100%;
+  padding: 5rem 0;
 
   ${props =>
     !props.small &&
@@ -39,14 +40,19 @@ const LoaderWrap = styled.div`
       height: 5rem;
     `};
 
-  padding: 5rem 0;
-
   ${props =>
-    props.small &&
+    props.centered &&
     css`
-      transform: scale(0.5);
-      width: 5rem;
-      height: 5rem;
+      position: fixed;
+      top: 58px;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.6);
+      z-index: 2;
     `};
 `
 

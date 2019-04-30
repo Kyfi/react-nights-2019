@@ -35,8 +35,8 @@ const CartView = ({ items, removeProduct }) => (
 )
 
 const mapStateToProps = state => ({
-  items: Object.keys(state.cartItems).map(productId => ({
-    quantity: state.cartItems[productId],
+  items: Object.keys(state.cart).map(productId => ({
+    quantity: state.cart[productId],
     product: { id: productId },
   })),
 })

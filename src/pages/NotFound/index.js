@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Layout from '../../components/Layout'
 import { H1 } from '../../components/Typography'
+import Layout from '../../components/Layout'
 
 const NotFound = () => (
   <Layout>

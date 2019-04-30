@@ -3,35 +3,44 @@ import React from 'react'
 import urls from '../../../../constants/urls'
 import {
   Wrapper,
+  Inner,
   ImgWrap,
   Img,
   TitleWrap,
   Title,
   Price,
   Link,
-  AddButton,
+  Footer,
 } from './styled'
+import { Button } from '../../../../components/Button'
+import { toast } from 'react-toastify'
 
 const Product = ({ node, addProduct }) => (
-  <Wrapper>
-    <Link to={urls.productDetail(node.id)}>
+  <Wrapper data-testid="product-in-list">
+    <Inner>
       <ImgWrap>
-        <Img src={node.image_url} alt={`${node.name} image`} />
+        <Link to={urls.productDetail(node.id)}>
+          <Img src={node.image_url} alt={`${node.name} image`} />
+        </Link>
       </ImgWrap>
       <TitleWrap>
-        <Title>{node.name}</Title>
+        <Title>
+          <Link to={urls.productDetail(node.id)}>{node.name}</Link>
+        </Title>
       </TitleWrap>
-      <Price>{node.price.formatted_amount}</Price>
-      <AddButton
-        type={'button'}
-        onClick={evt => {
-          evt.preventDefault()
-          addProduct(node.id)
-        }}
-      >
-        Add to Cart
-      </AddButton>
-    </Link>
+      <Footer>
+        <Price>{node.price.formatted_amount}</Price>
+        <Button
+          data-testid={'add-to-cart'}
+          onClick={() => {
+            addProduct(node.id)
+            toast.success(`1x ${node.name} has been added to Cart`)
+          }}
+        >
+          Add to Cart
+        </Button>
+      </Footer>
+    </Inner>
   </Wrapper>
 )
 

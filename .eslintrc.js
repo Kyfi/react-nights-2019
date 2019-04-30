@@ -5,6 +5,7 @@ module.exports = {
     'prettier',
     'prettier/react',
   ],
+  plugins: ['react-hooks', 'cypress'],
   root: true,
   env: {
     browser: true,
@@ -12,6 +13,7 @@ module.exports = {
     es6: true,
     jest: true,
     node: true,
+    'cypress/globals': true,
   },
   parser: 'babel-eslint',
   parserOptions: {
@@ -28,5 +30,7 @@ module.exports = {
     'no-shadow': [2, { allow: ['name'] }],
     // let's enforce this approach a bit
     'import/no-default-export': 1,
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
   },
 }

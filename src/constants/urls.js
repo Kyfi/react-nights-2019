@@ -5,6 +5,7 @@ const url = {
   signUp: '/sign_up',
   signIn: '/sign_in',
   cart: '/cart',
+  logout: '/logout',
   myAccount: '/my_account',
 }
 

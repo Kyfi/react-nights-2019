@@ -3,10 +3,8 @@ import { withRouter } from 'react-router-dom'
 
 import { Wrapper, Nav, NavLeft, NavRight, Link } from './styled'
 import urls from '../../constants/urls'
-import { removeToken } from '../../utils/token'
-import { removeCustomer } from '../../utils/customer'
 
-const Header = ({ isAuthenticated, logout, history }) => (
+const Header = ({ isAuthenticated }) => (
   <Wrapper>
     <Nav>
       <NavLeft>
@@ -16,17 +14,7 @@ const Header = ({ isAuthenticated, logout, history }) => (
         {isAuthenticated ? (
           <>
             <Link to={urls.myAccount}>My Account</Link>
-            <Link
-              as="button"
-              onClick={() => {
-                logout()
-                removeToken()
-                removeCustomer()
-                history.push('/')
-              }}
-            >
-              Logout
-            </Link>
+            <Link to={urls.logout}>Logout</Link>
           </>
         ) : (
           <>

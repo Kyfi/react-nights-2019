@@ -1,11 +1,13 @@
 const theme = {
   color: {
     black: '#252522',
-    softGray: '#f9f9f9',
+    grayDark: '#607d8b',
     gray: '#e5e5e5',
+    softGray: '#f9f9f9',
+    white: '#fff',
     primary: '#f8cb00',
     purple: '#6364d9',
-    white: '#fff',
+    purpleLight: 'rgba(99, 100, 217, 0.2)',
     red: '#ef0d33',
   },
   radius: {
@@ -13,6 +15,7 @@ const theme = {
   },
   shadow: {
     basic: '0 0 5rem -1.3rem rgb(150, 150, 150)',
+    secondary: '0 0 10rem -1.3rem rgb(0, 0, 0)',
   },
   fontSize: {
     small: '1.2rem',

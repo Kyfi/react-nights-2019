@@ -3,13 +3,15 @@ import { Link as BaseLink } from 'react-router-dom'
 import theme from '../../common/theme'
 
 export const Wrapper = styled.div`
-  overflow-x: auto;
+  position: relative;
+  z-index: 1;
 `
 
 export const Nav = styled.nav`
   background: white;
   display: flex;
   justify-content: space-between;
+  box-shadow: ${theme.shadow.basic};
 `
 
 export const NavLeft = styled.div`

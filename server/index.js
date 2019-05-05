@@ -1,6 +1,5 @@
 const express = require("express");
 const next = require("next");
-const ReactDomServer = ("react-dom/server")
 
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
@@ -12,14 +11,8 @@ app
     const server = express();
 
     server.get('/products/:id/:name', (req, res) => {
-      return app.render(req, res, '/products', req.params)
+      return app.render(req, res, '/product', req.params)
     })
-
-    /*server.get("/products", async (req, res) => {
-      const props = await ProductList.getInitialProps()
-      const html = ReactDomServer.renderToString(<ProductList {...props} />)
-      return handle(req, res.send(html));
-    });*/
 
     server.get("*", (req, res) => {
       return handle(req, res);
@@ -31,6 +24,6 @@ app
     });
   })
   .catch(ex => {
-    console.error(ex.stack);
+    /*console.error(ex.stack);*/
     process.exit(1);
   });

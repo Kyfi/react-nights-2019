@@ -1,9 +1,8 @@
 import config from '../config'
 import { setToken } from '../utils/token'
-import { server } from '../config'
 
 export const getGuestToken = async () => {
-  const response = await fetch(`${server}/oauth/token`, {
+  const response = await fetch(`${config.apiUrl}/oauth/token`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

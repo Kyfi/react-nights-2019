@@ -1,16 +1,15 @@
 {
-  "name": "react-nights",
+  "name": "react-nights-2019",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node server/index.js",
-    "build": "next build",
     "start": "NODE_ENV=production node server/index.js",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "build": "next build",
+    "dev": "node server/index.js",
     "format": "prettier --write '*/**/*.{js,css,md,json}'",
-    "lint:js": "eslint . --ignore-path .gitignore --fix",
+    "lint:js": "eslint --ext .js,.ts,.tsx . --ignore-path .gitignore --fix",
     "lint:css": "stylelint 'src/**/*.js'",
+    "type-check": "tsc --skipLibCheck",
     "cypress:open": "cypress open"
   },
   "jest": {
@@ -29,6 +28,13 @@
       "stylelint",
       "git add"
     ],
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "stylelint",
+      "yarn type-check",
+      "git add"
+    ],
     "*.{json,md}": [
       "prettier --write",
       "git add"
@@ -43,13 +49,11 @@
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-typescript": "^1.1.1",
-    "babel-plugin-macros": "^2.5.1",
     "express": "^4.16.4",
     "formik": "^1.5.2",
-    "isomorphic-unfetch": "^3.0.0",
+    "isomorphic-fetch": "^2.2.1",
     "next": "^8.1.0",
     "next-redux-wrapper": "^3.0.0-alpha.2",
-    "prop-types": "^15.7.2",
     "qs": "^6.7.0",
     "ramda": "^0.26.1",
     "react": "^16.8.4",
@@ -57,31 +61,33 @@
     "react-redux": "^6.0.1",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "2.1.8",
     "react-toastify": "^5.1.0",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "sanitize.css": "^8.0.0",
     "styled-components": "^4.2.0",
-    "styled-system": "^4.1.0",
+    "styled-system": "^4.0.8",
     "yup": "^0.27.0"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-do-expressions": "^7.2.0",
     "@strv/eslint-config-react": "^1.0.1",
+    "@strv/eslint-config-typescript": "^1.0.4",
     "@strv/stylelint-config-styled-components": "^1.0.0",
-    "@types/jest": "^24.0.12",
+    "@types/jest": "^24.0.11",
+    "@types/next": "^8.0.5",
     "@types/node": "^11.13.8",
-    "@types/react": "^16.8.15",
+    "@types/react": "^16.8.14",
     "@types/react-dom": "^16.8.4",
     "@types/react-redux": "^7.0.8",
     "@types/react-router-dom": "^4.3.2",
     "@types/styled-components": "^4.1.14",
+    "@typescript-eslint/parser": "^1.7.0",
     "cypress": "^3.2.0",
+    "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-cypress": "^2.2.1",
     "eslint-plugin-react-hooks": "^1.6.0",
-    "fetch-mock": "^7.3.3",
+    "fetch-mock": "^7.3.1",
     "husky": "^1.3.1",
     "jest-styled-components": "^6.3.1",
     "lint-staged": "^8.1.5",
@@ -89,8 +95,6 @@
     "react-testing-library": "^6.1.2",
     "stylelint": "^9.10.1",
     "stylelint-config-prettier": "^5.0.0",
-    "tslint": "^5.16.0",
-    "tslint-react": "^4.0.0",
-    "typescript": "^3.4.5"
+    "typescript": "3.3.4000"
   }
 }

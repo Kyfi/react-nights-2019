@@ -1,14 +1,12 @@
+import React from 'react'
+import { connect } from 'react-redux'
 import Router from 'next/router'
 
 import { getProducts } from '../../api/products/getProducts'
 
-import React from 'react'
-import { connect } from 'react-redux'
-
 import Loader from '../../components/Loader'
-import Layout from '../../components/Layout'
 import { Pagination } from '../../components/Pagination'
-import Product from './components/Product'
+import { Product } from './Product'
 import { ProductsWrap, ProductsWrapInner } from './styled'
 
 import * as cartActions from '../../store/cart/actions'
@@ -18,14 +16,14 @@ import { PAGE_DEFAULT, PAGE_SIZE_DEFAULT } from '../../constants/base'
 
 const Products = ({ res, match, page, size, addProduct, isLoading }) => {
   const handleAddToCart = productId => addProduct(productId)
-  /*const handleSizeChange = newSize => {
+  const handleSizeChange = newSize => {
     Router.push(`/products?page=${page}&size=${newSize}`)
-  }*/
+  }
 
   return (
-    <Layout>
-      {/*{isLoading && <Loader centered />}*/}
-      {/*{res && (
+    <main>
+      {isLoading && <Loader centered />}
+      {res && (
         <>
           <Pagination
             pages={res.meta.page_count}
@@ -46,8 +44,8 @@ const Products = ({ res, match, page, size, addProduct, isLoading }) => {
             </ProductsWrapInner>
           </ProductsWrap>
         </>
-      )}*/}
-    </Layout>
+      )}
+    </main>
   )
 }
 

@@ -1,7 +1,9 @@
 import React from 'react'
+import { toast } from 'react-toastify'
 
-import { kebabCase } from '../../../../utils/kebab-case'
-import urls from '../../../../constants/urls'
+import urls from '../../../constants/urls'
+import { kebabCase } from '../../../utils/kebab-case'
+import { Button } from '../../../components/Button'
 import {
   Wrapper,
   Inner,
@@ -13,8 +15,6 @@ import {
   Link,
   Footer,
 } from './styled'
-import { Button } from '../../../../components/Button'
-import { toast } from 'react-toastify'
 
 const Product = ({ node, addProduct }) => (
   <Wrapper data-testid="product-in-list">
@@ -33,7 +33,7 @@ const Product = ({ node, addProduct }) => (
             href={`/product?id=${node.id}`}
             as={`${urls.productList}/${node.id}/${kebabCase(node.name)}`}
           >
-            {node.name}
+            <div>{node.name}</div>
           </Link>
         </Title>
       </TitleWrap>
@@ -53,4 +53,4 @@ const Product = ({ node, addProduct }) => (
   </Wrapper>
 )
 
-export default Product
+export { Product }

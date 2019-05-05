@@ -3,20 +3,20 @@ import range from 'ramda/src/range'
 import map from 'ramda/src/map'
 import urls from '../../constants/urls'
 
-import { Container, List, ListItem } from './styled'
+import { Container, List, Link } from './styled'
 import PageSize from '../PageSize'
 
 const renderPaginationItem = (pageSize, page) => number => {
   const isCurrentPage = number === parseInt(page, 10)
 
   return (
-    <ListItem
+    <Link
       key={number}
       to={`${urls.productList}?page=${number}&page_size=${pageSize}`}
       iscurrentpage={isCurrentPage ? 1 : 0}
     >
       {number}
-    </ListItem>
+    </Link>
   )
 }
 

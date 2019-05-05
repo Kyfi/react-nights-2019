@@ -1,8 +1,8 @@
-import config, { server } from '../../config'
+import config from '../../config'
 import { AsyncValidationError } from '../../utils/errors'
 
 export const getCustomerToken = async ({ username, password }) => {
-  const response = await fetch(`${server}/oauth/token`, {
+  const response = await fetch(`${config.apiUrl}/oauth/token`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

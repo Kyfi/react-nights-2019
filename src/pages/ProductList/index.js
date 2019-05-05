@@ -6,6 +6,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import Loader from '../../components/Loader'
+import Layout from '../../components/Layout'
 import { Pagination } from '../../components/Pagination'
 import Product from './components/Product'
 import { ProductsWrap, ProductsWrapInner } from './styled'
@@ -14,16 +15,17 @@ import * as cartActions from '../../store/cart/actions'
 import * as productActions from '../../store/products/actions'
 import { PAGE_DEFAULT, PAGE_SIZE_DEFAULT } from '../../constants/base'
 
+
 const Products = ({ res, match, page, size, addProduct, isLoading }) => {
   const handleAddToCart = productId => addProduct(productId)
-  const handleSizeChange = newSize => {
+  /*const handleSizeChange = newSize => {
     Router.push(`/products?page=${page}&size=${newSize}`)
-  }
+  }*/
 
   return (
-    <main>
-      {isLoading && <Loader centered />}
-      {res && (
+    <Layout>
+      {/*{isLoading && <Loader centered />}*/}
+      {/*{res && (
         <>
           <Pagination
             pages={res.meta.page_count}
@@ -44,15 +46,15 @@ const Products = ({ res, match, page, size, addProduct, isLoading }) => {
             </ProductsWrapInner>
           </ProductsWrap>
         </>
-      )}
-    </main>
+      )}*/}
+    </Layout>
   )
 }
 
 const getInitialProps = async ({ store, query }) => {
   const { page = PAGE_DEFAULT, size = PAGE_SIZE_DEFAULT } = query
 
-  const res = await getProducts({ page: { number: page, size: size} })
+  const res = await getProducts({ page: { number: page, size} })
   store.dispatch(productActions.loadProducts(res.data))
   return { page, size, isLoading: false, res }
 }

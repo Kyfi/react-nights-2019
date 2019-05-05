@@ -1,17 +1,29 @@
-/* eslint-env node */
+const express = require("express");
+const next = require("next");
 
-const React = require('react')
-const ReactDomServer = require('react-dom/server')
-const App = require('../src/pages/ProductList')
+const dev = process.env.NODE_ENV !== "production";
+const app = next({ dev });
+const handle = app.getRequestHandler();
 
-const express = require('express')
-const app = express()
-const port = 3000
+app
+  .prepare()
+  .then(() => {
+    const server = express();
 
-app.get('/products', async (req, res ) => {
-  const props = await App.getInitialProps()
-  const html = ReactDomServer.renderToString(<Products {...props} />)
-  res.send(html)
-})
+    server.get('/products/:id/:name', (req, res) => {
+      return app.render(req, res, '/products', req.params)
+    })
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+    server.get("*", (req, res) => {
+      return handle(req, res);
+    });
+
+    server.listen(3000, err => {
+      if (err) throw err;
+      console.log("> Ready on http://localhost:3000");
+    });
+  })
+  .catch(ex => {
+    console.error(ex.stack);
+    process.exit(1);
+  });

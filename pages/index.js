@@ -1,7 +1,3 @@
-const Index = () => (
-  <div>
-    <p>Hello Next.js</p>
-  </div>
-)
+import { ProductList } from '../src/pages/ProductList'
 
-export default Index
+export default ProductList

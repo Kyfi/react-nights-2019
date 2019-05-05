@@ -3,13 +3,10 @@ import * as serviceWorker from './serviceWorker'
 import MyApp from './App'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router } from 'react-router-dom'
 
 const render = () => {
   ReactDOM.render(
-    <Router>
-      <MyApp />
-    </Router>,
+      <MyApp />,
     document.getElementById('root')
   )
 }

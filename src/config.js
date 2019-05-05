@@ -5,3 +5,9 @@ export default {
   scope: process.env.REACT_APP_SCOPE,
   apiUrl: process.env.REACT_APP_APIURL,
 }
+
+const dev = process.env.NODE_ENV !== 'production'
+
+export const server = dev
+  ? 'https://react-nights.commercelayer.io'
+  : 'xx'

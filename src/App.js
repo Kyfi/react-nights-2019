@@ -4,7 +4,6 @@ import { Provider } from 'react-redux'
 import withRedux from 'next-redux-wrapper'
 import { ToastContainer, toast } from 'react-toastify'
 
-import Routes from './routes'
 import GlobalStyles from './globalStyles'
 import { ProductList } from './pages/ProductList'
 import { ProductDetail } from './pages/ProductDetail'
@@ -17,9 +16,9 @@ const defaultStore = configureStore({
 })
 
 class MyApp extends App {
-
-  static async getInitialProps({ Component, ctx }){
+  static async getInitialProps({ Component, ctx }) {
     let pageProps = {}
+
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx)
     }
@@ -30,9 +29,11 @@ class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props
 
+    console.log("this.props", this.props)
+
     return (
       <Container>
-        <Provider store={this.props.store}>
+        <Provider store={this.props.store ? this.props.store : defaultStore}>
           <React.Fragment>
             <GlobalStyles />
             <ToastContainer position={toast.POSITION.BOTTOM_RIGHT} />

@@ -8,10 +8,12 @@ import { refreshCustomerToken } from './customers/refreshCustomerToken'
 import { getToken } from '../utils/token'
 import { getRefreshToken } from '../utils/refreshToken'
 import { toast } from 'react-toastify'
-import fetch from 'isomorphic-unfetch'
+import 'isomorphic-unfetch'
+import { server } from '../config'
+import { isBrowser } from '../utils/is-browser'
 
 const makeRequest = (url, options, token) =>
-  fetch(`${config.apiUrl}${url}`, {
+  fetch(`${server}/api/skus?include=prices`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/vnd.api+json',
@@ -23,6 +25,8 @@ const makeRequest = (url, options, token) =>
 export const api = async (url, options) => {
   // Grab the token from the store or from the API
   let token = getToken() || (await getGuestToken())
+
+  console.log("TOKEN", token)
 
   try {
     // Do the request
@@ -48,7 +52,7 @@ export const api = async (url, options) => {
     // Here is a place to handle special cases
     // CASE: second 401 we need to logout
     if (response && response.status === 401) {
-      window.location.assign(urls.logout)
+      isBrowser() && window.location.assign(urls.logout)
     }
 
     // If everything went fine just return the result

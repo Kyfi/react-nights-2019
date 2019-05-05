@@ -4,8 +4,10 @@ import { formatProduct } from './../utils/formatProduct'
 
 export const getProducts = async urlQuery => {
   const { data, meta, included } = await api(
-    `/api/skus?${qs.stringify({ include: 'prices', ...urlQuery })}`
+    `/api/skus?include=prices`
   )
+
+  console.log(data)
 
   return {
     data: data.map(product => formatProduct(product, included)),

@@ -1,6 +1,6 @@
 import * as serviceWorker from './serviceWorker'
 
-import { App } from './App'
+import MyApp from './App'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
@@ -8,7 +8,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 const render = () => {
   ReactDOM.render(
     <Router>
-      <App />
+      <MyApp />
     </Router>,
     document.getElementById('root')
   )

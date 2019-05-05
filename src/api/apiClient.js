@@ -8,6 +8,7 @@ import { refreshCustomerToken } from './customers/refreshCustomerToken'
 import { getToken } from '../utils/token'
 import { getRefreshToken } from '../utils/refreshToken'
 import { toast } from 'react-toastify'
+import fetch from 'isomorphic-unfetch'
 
 const makeRequest = (url, options, token) =>
   fetch(`${config.apiUrl}${url}`, {

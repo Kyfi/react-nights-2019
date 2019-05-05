@@ -8,6 +8,8 @@ import ProductComponent from './components/Product'
 import { useApi } from '../../api/useApi'
 import { getProductById } from '../../api/products/getProduct'
 import * as cartActions from '../../store/cart/actions'
+import { PAGE_DEFAULT, PAGE_SIZE_DEFAULT } from '../../constants/base'
+import { getProducts } from '../../api/products/getProducts'
 
 const ProductView = ({ match, addProduct }) => {
   const { productId } = match.params
@@ -31,6 +33,14 @@ const ProductView = ({ match, addProduct }) => {
     </Layout>
   )
 }
+
+/*const getInitialProps = async (ctx: CTX) => {
+  const { page = PAGE_DEFAULT, size = PAGE_SIZE_DEFAULT } = query
+
+  const res = await getProducts({ page: { number: page, size} })
+  store.dispatch(productActions.loadProducts(res.data))
+  return { page, size, isLoading: false, res }
+}*/
 
 const mapDispatchToProps = {
   addProduct: cartActions.addProduct,

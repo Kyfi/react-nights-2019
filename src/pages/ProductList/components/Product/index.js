@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { kebabCase } from '../../../../utils/kebab-case'
 import urls from '../../../../constants/urls'
 import {
   Wrapper,
@@ -19,13 +20,21 @@ const Product = ({ node, addProduct }) => (
   <Wrapper data-testid="product-in-list">
     <Inner>
       <ImgWrap>
-        <Link to={urls.productDetail(node.id)}>
-          <Img src={node.image_url} alt={`${node.name} image`} />
+        <Link
+          href={`/product?id=${node.id}`}
+          as={`${urls.productList}/${node.id}/${kebabCase(node.name)}`}
+        >
+          <Img src={node.image_url} alt={`${node.name}`} />
         </Link>
       </ImgWrap>
       <TitleWrap>
         <Title>
-          <Link to={urls.productDetail(node.id)}>{node.name}</Link>
+          <Link
+            href={`/product?id=${node.id}`}
+            as={`${urls.productList}/${node.id}/${kebabCase(node.name)}`}
+          >
+            {node.name}
+          </Link>
         </Title>
       </TitleWrap>
       <Footer>

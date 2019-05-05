@@ -12,7 +12,7 @@ const renderPaginationItem = (pageSize, page) => number => {
   return (
     <Link
       key={number}
-      to={`${urls.productList}?page=${number}&page_size=${pageSize}`}
+      href={`${urls.productList}?page=${number}&size=${pageSize}`}
       iscurrentpage={isCurrentPage ? 1 : 0}
     >
       {number}
@@ -20,7 +20,14 @@ const renderPaginationItem = (pageSize, page) => number => {
   )
 }
 
-const Pagination = ({ pages, page, pageSize, recordCount, history, onSizeChange }) => (
+const Pagination = ({
+  pages,
+  page,
+  pageSize,
+  recordCount,
+  history,
+  onSizeChange,
+}) => (
   <Container>
     <PageSize
       history={history}

@@ -1,6 +1,7 @@
-import { Link as BaseLink } from 'react-router-dom'
-
+import React from 'react'
+import BaseLink from 'next/link'
 import styled, { css } from 'styled-components'
+
 import theme from '../../common/theme'
 
 export const Container = styled.div`
@@ -24,7 +25,7 @@ export const List = styled.div`
   align-items: center;
 `
 
-export const ListItem = styled(BaseLink)`
+export const ListItem = styled.a`
   background: ${theme.color.white};
   padding: 10px 15px;
   border: 1px solid ${theme.color.purple};
@@ -46,3 +47,9 @@ export const ListItem = styled(BaseLink)`
       color: ${theme.color.white};
     `}
 `
+
+export const Link = props => (
+  <BaseLink href={props.href} as={props.as} key={props.key}>
+    <ListItem href={props.href}>{props.children}</ListItem>
+  </BaseLink>
+)

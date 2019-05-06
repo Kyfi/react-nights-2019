@@ -2,6 +2,7 @@ import { setRefreshToken, getRefreshToken } from '../../utils/refreshToken'
 import { setToken, getToken } from '../../utils/token'
 
 import config from '../../config'
+import { server } from '../../config'
 
 export const refreshCustomerToken = async () => {
   const refreshToken = getRefreshToken()

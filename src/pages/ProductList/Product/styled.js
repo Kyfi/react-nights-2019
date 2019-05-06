@@ -1,6 +1,7 @@
-import styled from 'styled-components/macro'
-import { Link as BaseLink } from 'react-router-dom'
-import theme from '../../../../common/theme'
+import React from 'react'
+import styled from 'styled-components'
+import BaseLink from 'next/link'
+import theme from '../../../common/theme'
 
 export const Wrapper = styled.li`
   padding: 0.5rem;
@@ -35,10 +36,16 @@ export const Price = styled.div`
   font-size: 1.8rem;
 `
 
-export const Link = styled(BaseLink)`
+export const StyledLink = styled.a`
   text-decoration: none;
   color: initial;
 `
+
+export const Link = props => (
+  <BaseLink href={props.href} as={props.as}>
+    <StyledLink href={props.href}>{props.children}</StyledLink>
+  </BaseLink>
+)
 
 export const Inner = styled.div`
   background: white;
@@ -79,12 +86,12 @@ export const Title = styled.h3`
   font-weight: 100;
   text-transform: uppercase;
 
-  ${Link} {
+  ${StyledLink} {
     display: block;
   }
 
   &:hover {
-    ${Link} {
+    ${StyledLink} {
       text-decoration: underline;
     }
   }

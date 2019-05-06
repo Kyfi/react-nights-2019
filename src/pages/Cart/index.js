@@ -1,14 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import Layout from '../../components/Layout'
 import { H1 } from '../../components/Typography'
 import { CartItemComponent } from './components/CartItem'
 import { CartItemsWrapper } from './styled'
 import * as cartActions from '../../store/cart/actions'
 
 const CartView = ({ items, removeProduct }) => (
-  <Layout>
+  <main>
     <H1>Cart</H1>
     <div>
       {items.length < 1 ? (
@@ -31,7 +30,7 @@ const CartView = ({ items, removeProduct }) => (
         </CartItemsWrapper>
       )}
     </div>
-  </Layout>
+  </main>
 )
 
 const mapStateToProps = state => ({

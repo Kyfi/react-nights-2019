@@ -1,5 +1,4 @@
-import styled from 'styled-components/macro'
-import { Link as BaseLink } from 'react-router-dom'
+import styled from 'styled-components'
 import theme from '../../common/theme'
 
 export const Wrapper = styled.div`
@@ -22,7 +21,7 @@ export const NavRight = styled.div`
   display: flex;
 `
 
-export const Link = styled(BaseLink)`
+export const StyledLink = styled.a`
   text-decoration: none;
   color: ${theme.color.black};
   background-color: ${theme.color.white};

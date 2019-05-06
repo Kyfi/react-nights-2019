@@ -1,31 +1,31 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
+import Link from 'next/link'
 
-import { Wrapper, Nav, NavLeft, NavRight, Link } from './styled'
+import { Wrapper, Nav, NavLeft, NavRight, StyledLink } from './styled'
 import urls from '../../constants/urls'
 
 const Header = ({ isAuthenticated }) => (
   <Wrapper>
     <Nav>
       <NavLeft>
-        <Link to={urls.index}>{'Product List'}</Link>
+        <Link href={urls.index}><StyledLink>{'Product List'}</StyledLink></Link>
       </NavLeft>
       <NavRight>
         {isAuthenticated ? (
           <>
-            <Link to={urls.myAccount}>My Account</Link>
-            <Link to={urls.logout}>Logout</Link>
+            <Link href={urls.myAccount}><StyledLink>{'My Account'}</StyledLink></Link>
+            <Link href={urls.logout}><StyledLink>{'Logout'}</StyledLink></Link>
           </>
         ) : (
           <>
-            <Link to={urls.signIn}>Sign In</Link>
-            <Link to={urls.signUp}>Sign Up</Link>
+            <Link href={urls.signIn}><StyledLink>{'Sign In'}</StyledLink></Link>
+            <Link href={urls.signUp}><StyledLink>{'Sign Up'}</StyledLink></Link>
           </>
         )}
-        <Link to={urls.cart}>{'My Cart'}</Link>
+        <Link href={urls.cart}><StyledLink>{'My Cart'}</StyledLink></Link>
       </NavRight>
     </Nav>
   </Wrapper>
 )
 
-export default withRouter(Header)
+export default Header

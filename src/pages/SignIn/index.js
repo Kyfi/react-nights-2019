@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { toast } from 'react-toastify'
 
 import { H1 } from '../../components/Typography/'
-import Layout from '../../components/Layout'
 import { Input } from '../../components/Input'
 import { Button } from '../../components/Button/styled'
 import { Form, GlobalFormError } from '../../components/Form'
@@ -17,7 +16,7 @@ const initialValues = {
   password: '',
 }
 
-const SignInPage = ({ login, history }) => {
+const SignInPage = ({ login }) => {
   const [formAsyncError, setFormAsyncError] = useState('')
 
   const handleOnSubmit = async ({ email, password }, { setSubmitting }) => {
@@ -26,7 +25,6 @@ const SignInPage = ({ login, history }) => {
       await login({
         username: email,
         password,
-        push: history.push,
       })
     } catch (error) {
       if (error instanceof AsyncValidationError) {
@@ -41,7 +39,7 @@ const SignInPage = ({ login, history }) => {
   }
 
   return (
-    <Layout dataTestId="login-page">
+    <main data-test-id="login-page">
       <H1 textAlign="center">Sign In</H1>
 
       <Formik
@@ -62,7 +60,7 @@ const SignInPage = ({ login, history }) => {
           </Form>
         )}
       </Formik>
-    </Layout>
+    </main>
   )
 }
 

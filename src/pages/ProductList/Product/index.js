@@ -1,6 +1,9 @@
 import React from 'react'
+import { toast } from 'react-toastify'
 
-import urls from '../../../../constants/urls'
+import urls from '../../../constants/urls'
+import { kebabCase } from '../../../utils/kebab-case'
+import { Button } from '../../../components/Button'
 import {
   Wrapper,
   Inner,
@@ -12,20 +15,26 @@ import {
   Link,
   Footer,
 } from './styled'
-import { Button } from '../../../../components/Button'
-import { toast } from 'react-toastify'
 
 const Product = ({ node, addProduct }) => (
   <Wrapper data-testid="product-in-list">
     <Inner>
       <ImgWrap>
-        <Link to={urls.productDetail(node.id)}>
-          <Img src={node.image_url} alt={`${node.name} image`} />
+        <Link
+          href={`/product?id=${node.id}`}
+          as={`${urls.productList}/${node.id}/${kebabCase(node.name)}`}
+        >
+          <Img src={node.image_url} alt={`${node.name}`} />
         </Link>
       </ImgWrap>
       <TitleWrap>
         <Title>
-          <Link to={urls.productDetail(node.id)}>{node.name}</Link>
+          <Link
+            href={`/product?id=${node.id}`}
+            as={`${urls.productList}/${node.id}/${kebabCase(node.name)}`}
+          >
+            <div>{node.name}</div>
+          </Link>
         </Title>
       </TitleWrap>
       <Footer>
@@ -44,4 +53,4 @@ const Product = ({ node, addProduct }) => (
   </Wrapper>
 )
 
-export default Product
+export { Product }

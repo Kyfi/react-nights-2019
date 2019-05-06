@@ -1,15 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import Layout from '../../components/Layout'
+import { PrivatePage } from '../../components/PrivatePage'
 import { H1 } from '../../components/Typography'
 
 const AccountPage = ({ customer }) => (
-  <Layout>
-    <H1 data-testid="account-page">
-      Welcome {customer.attributes.metadata.firstName}
-    </H1>
-  </Layout>
+  <PrivatePage>
+    {() => (
+      <main>
+        <H1 data-testid="account-page">
+          Welcome {customer.attributes.metadata.firstName}
+        </H1>
+      </main>
+    )}
+  </PrivatePage>
 )
 
 const mapStateToProps = state => ({

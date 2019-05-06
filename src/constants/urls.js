@@ -6,7 +6,7 @@ const url = {
   signIn: '/sign_in',
   cart: '/cart',
   logout: '/logout',
-  myAccount: '/my_account',
+  myAccount: '/myaccount',
 }
 
 export default url
